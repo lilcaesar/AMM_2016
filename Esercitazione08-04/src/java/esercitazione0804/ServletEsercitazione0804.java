@@ -43,8 +43,8 @@ public class ServletEsercitazione0804 extends HttpServlet {
             int matricola = Integer.parseInt(request.getParameter("Matricola"));
             String nomeEsame = request.getParameter("ListaEsami");
             int voto = Integer.parseInt(request.getParameter("Voto"));
-            String commentoProf = request.getParameter("Note");
-            
+            String commentoProf = request.getParameter("Nota");
+
             // Assegna i dati prelevati
             esame.setNomeStudente(nomeStudente);
             esame.setCognomeStudente(cognomeStudente);
@@ -62,6 +62,20 @@ public class ServletEsercitazione0804 extends HttpServlet {
             out.println("<head><title>Registrazione esami veloce</title></head>");
             out.println("<body>");
             out.println("<h1> Registrazione Esami Triennale e Magistrale </h1>");
+
+            // Step 3
+            if (registrato) {
+                out.println("<div>");
+                out.println("<p><strong>Registrazione completata con successo</strong></p>");
+                out.println("<p>Nome studente:" + esame.getNomeStudente() + "</p>");
+                out.println("<p>Cognome studente:" + esame.getCognomeStudente() + "</p>");
+                out.println("<p>Matricola studente:" + esame.getMatricola() + "</p>");
+                out.println("<p>Esame:" + esame.getNomeEsame() + "</p>");
+                out.println("<p>Voto:" + esame.getVoto() + "</p>");
+                out.println("<p>Commento:" + esame.getNota() + "</p>");
+                out.println("</div>");
+            }
+
             out.println("<form method=\"post\" action=\"simpleregistration.html\">");
             out.println("  <div>");
             out.println("    <label for=\"NomeStudente\">Nome</label>");

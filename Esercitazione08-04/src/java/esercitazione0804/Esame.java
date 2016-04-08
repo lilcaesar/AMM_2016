@@ -10,12 +10,22 @@ package esercitazione0804;
  * @author alessandra
  */
 public class Esame {
+
     private String nomeStudente;
     private String cognomeStudente;
     private int matricola;
     private String nomeEsame;
     private int voto;
     private String nota;
+
+    public Esame() {
+        nomeStudente = "";
+        cognomeStudente = "";
+        matricola = 0;
+        nomeEsame = "";
+        voto = 0;
+        nota = "";
+    }
 
     /**
      * @return the nomeStudente

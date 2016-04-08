@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alessandra
  */
-@WebServlet(name = "ServletEsercitazione0804", urlPatterns = {"/ServletEsercitazione0804"})
+@WebServlet(name = "ServletEsercitazione0804", urlPatterns = {"/simpleregistration.html"})
 public class ServletEsercitazione0804 extends HttpServlet {
 
     /**
@@ -32,17 +32,73 @@ public class ServletEsercitazione0804 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        // Step 2
+        Esame esame = new Esame();
+        boolean registrato = false;
+        // Lettura dati
+        if (request.getParameter("registra") != null) {
+            // Preleva i dati inviati
+            String nomeStudente = request.getParameter("NomeStudente");
+            String cognomeStudente = request.getParameter("CognomeStudente");
+            int matricola = Integer.parseInt(request.getParameter("Matricola"));
+            String nomeEsame = request.getParameter("ListaEsami");
+            int voto = Integer.parseInt(request.getParameter("Voto"));
+            String commentoProf = request.getParameter("Note");
+            
+            // Assegna i dati prelevati
+            esame.setNomeStudente(nomeStudente);
+            esame.setCognomeStudente(cognomeStudente);
+            esame.setMatricola(matricola);
+            esame.setNomeEsame(nomeEsame);
+            esame.setVoto(voto);
+            esame.setNota(commentoProf);
+            // Esame registrato
+            registrato = true;
+        }
+        // Step 1
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletEsercitazione0804</title>");            
-            out.println("</head>");
+            out.println("<head><title>Registrazione esami veloce</title></head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletEsercitazione0804 at " + request.getContextPath() + "</h1>");
+            out.println("<h1> Registrazione Esami Triennale e Magistrale </h1>");
+            out.println("<form method=\"post\" action=\"simpleregistration.html\">");
+            out.println("  <div>");
+            out.println("    <label for=\"NomeStudente\">Nome</label>");
+            out.println("   <input type=\"text\" name=\"NomeStudente\" id=\"NomeStudente\" />");
+            out.println("</div>");
+            out.println("<div>");
+            out.println("    <label for=\"CognomeStudente\">Cognome</label>");
+            out.println("    <input type=\"text\" name=\"CognomeStudente\" id=\"CognomeStudente\" />");
+            out.println("</div>");
+            out.println("<div>");
+            out.println("    <label for=\"Matricola\">Matricola</label>");
+            out.println("    <input type=\"number\" name=\"Matricola\" id=\"Matricola\" /> ");
+            out.println("</div>");
+            out.println("<div>");
+            out.println("    <label for=\"NomeEsame\">Nome Esame</label>");
+            out.println("  <select name=\"ListaEsami\" id=\"ListaEsami\">");
+            out.println("          <option value=\"PR1\">Programmazione 1</option>");
+            out.println("           <option value=\"PR2\">Programmazione 2</option>");
+            out.println("           <option value=\"AMM\">Amministrazione di Sistema</option>");
+            out.println("           <option value=\"EAI\">Elaborazione di Immagini</option>");
+            out.println("           <option value=\"FS\">Fondamenti di Sistema</option>");
+            out.println("           <option value=\"ARE2\">Are 2</option>");
+            out.println("</select>");
+            out.println("</div>");
+            out.println("<div>");
+            out.println("    <label for=\"Voto\">Voto</label>");
+            out.println("    <input type=\"range\" min=18 max=31 name=\"Voto\" id=\"Voto\" /> ");
+            out.println("</div>");
+            out.println("<div>");
+            out.println("    <label for=\"Nota\">Note</label>");
+            out.println("    <textarea name=\"Nota\" id=\"Nota\" ></textarea>");
+            out.println("</div>");
+            out.println("<button type=\"submit\" name=\"registra\">Registra</button>");
+            out.println("</form>");
             out.println("</body>");
             out.println("</html>");
+            out.close();
         }
     }
 

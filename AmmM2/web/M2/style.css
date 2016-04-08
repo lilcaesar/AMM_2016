@@ -10,5 +10,11 @@ and open the template in the editor.
 
 body
 {
-    background-image: url('img/background.jpg'); 
+    background-image: url('img/background.jpg');
+}
+
+h1
+{
+    color: blue;
+    font-size: 12px;
 }

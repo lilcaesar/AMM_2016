@@ -11,12 +11,35 @@ and open the template in the editor.
 body
 {
     background-image: url('img/background.jpg');
+    font: "Open Sans", Arial, sans-serif;
 }
 
-h1
+h1, h2, h3
 {
     color: blue;
-    font-size: 300%;
+}
+
+a:link
+{
+    text-decoration: underline;
+    color: purple;
+}
+
+a:visited
+{
+    text-decoration: underline;
+    color: purple;
+}
+
+a:hover
+{
+    font-weight: bold;
+}
+
+label::after, label::before
+{
+    content: '\A';
+    white-space: pre;
 }
 
 @media only screen and (min-width: 720px)

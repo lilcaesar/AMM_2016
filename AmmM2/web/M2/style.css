@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7-apr-2016, 10.12.16
+    Author     : alessandra
+*/
+
+body
+{
+    background-image: url('img/background.jpg');
+}
+
+h1
+{
+    color: blue;
+    font-size: 300%;
+}
+
+@media only screen and (min-width: 720px)
+{
+    #titoloSito {
+        position: relative;
+        left: 20px;
+        right: 20px;
+    }
+}
+
+@media only screen and (max-width: 720px)
+{
+    #titoloSito {
+        position: relative;
+        left: 40px;
+        right: 40px;
+    }
+}

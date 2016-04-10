@@ -11,11 +11,12 @@ and open the template in the editor.
 body
 {
     background-image: url('img/background.jpg');
-    font: "Open Sans", Arial, sans-serif;
+    font: 1em "Open Sans", Arial, sans-serif;
 }
 
 h1, h2, h3
 {
+    margin: 0px;
     color: blue;
 }
 
@@ -42,20 +43,50 @@ label::after, label::before
     white-space: pre;
 }
 
+tr:nth-child(even)
+{
+    background-color: #d3d3f3
+}
+
+tr:nth-child(odd)
+{
+    background-color: #f2f2f2
+}
+
+th
+{
+    background-color: burlywood;
+    font: 1em "Lucida Console", Arial, sans-serif;
+    font-weight: bold;
+}
+
+table, th, td
+{
+    margin: 0px;
+    padding: 10px;
+    border: 2px solid darkblue;
+    border-collapse: collapse;    
+    text-align: center;
+}
+
+#sidebarSinistra ul, #linkNavigazione ul
+{
+    list-style-type: none;
+}
+
 @media only screen and (min-width: 720px)
 {
-    #titoloSito {
-        position: relative;
-        left: 20px;
-        right: 20px;
+    #sidebarSinistra {
+        float: left;
+        width: 20%;
+        padding-left: 5px;
+
     }
 }
 
 @media only screen and (max-width: 720px)
 {
-    #titoloSito {
-        position: relative;
-        left: 40px;
-        right: 40px;
+    #sidebarSinistra {
+        float: bottom;
     }
 }

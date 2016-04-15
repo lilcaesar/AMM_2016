@@ -5,6 +5,7 @@
  */
 package amm.esercitazione2;
 
+import amm.esercitazione2.Classi.Professore;
 import amm.esercitazione2.Classi.Utente;
 import amm.esercitazione2.Classi.UtentiFactory;
 import java.io.IOException;
@@ -45,7 +46,19 @@ public class Login extends HttpServlet {
             
             for(Utente u : listaUtenti)
             {
-                
+                if(u.getUsername().equals(username) && u.getPassword().equals(password))
+                {
+                    if(u instanceof Professore)
+                    {
+                        request.setAttribute("professore", u);
+                        request.getRequestDispatcher("professore_autenticato.jsp").forward(request, response);
+                    }
+                    else
+                    {
+                        request.setAttribute("studente", u);
+                        request.getRequestDispatcher("studente_autenticato.jsp").forward(request, response);
+                    }
+                }
             }
             
         }

@@ -1,9 +1,10 @@
 <%-- 
-    Document   : form_login
-    Created on : 15-apr-2016, 11.48.54
+    Document   : professore_autenticato
+    Created on : 15-apr-2016, 11.53.11
     Author     : alessandra
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -75,22 +76,22 @@
             <!-- contenuto -->
             <div id="content">
                 <div class="input-form">
-                    <h3>Login</h3>
+                    <h3>Bentornato ${professore.nome} ${professore.cognome}</h3>
 
-                    <form method="post" action="Login">
-                        <input type="hidden" name="cmd" value="login">
-                        <p>
-                            <label for="user">Username</label>
-                            <input type="text" name="Username" id="user"> 
-                        </p>
-                        <p>
-                            <label for="password">Password</label>
-                            <input type="password" name="Password" id="password"> 
-                        </p>
-                        <p>
-                            <input type="submit" name="Submit" value="Login">˙
-                        </p>
-                    </form>
+                    <div>
+                        Id: ${professore.id}
+                    </div>
+                    <div>
+                        Corsi insegnati:
+                        <ul>
+                            <c:forEach var="materia" items="${professore.corsiAssegati}">
+                                <li>
+                                    ${materia.nome}
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
 

@@ -84,7 +84,7 @@
                     <div>
                         Corsi insegnati:
                         <ul>
-                            <c:forEach var="materia" items="${professore.corsiAssegati}">
+                            <c:forEach var="materia" items="${professore.corsiAssegnati}">
                                 <li>
                                     ${materia.nome}
                                 </li>

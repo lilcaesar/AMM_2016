@@ -91,7 +91,19 @@
                             </c:forEach>
                         </ul>
                     </div>
-
+                    <div>
+                        <h3>Registrazione Esami</h3>
+                        <ul>
+                            <c:forEach var="alunno" items="${alunni}">
+                                <li>
+                                    ${alunno.nome} ${alunno.cognome}
+                                    <a href="Registra?idAlunno=${alunno.id}">
+                                        Registra esame
+                                    </a>
+                                </li>
+                            </c:forEach>                            
+                        </ul>
+                    </div>
                 </div>
             </div>
 

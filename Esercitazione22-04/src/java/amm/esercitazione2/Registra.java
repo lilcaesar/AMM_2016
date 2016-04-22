@@ -36,5 +36,8 @@ public class Registra extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         request.setAttribute("professore", UtentiFactory.getInstance().getProfessore((int) session.getAttribute("id")));
+
+        int idAlunno = Integer.parseInt(request.getParameter("idAlunno"));
+        request.setAttribute("alunno", UtentiFactory.getInstance().getStudente(idAlunno));
     }
 }

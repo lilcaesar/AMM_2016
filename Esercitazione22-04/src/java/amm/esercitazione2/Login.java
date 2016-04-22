@@ -8,6 +8,7 @@ package amm.esercitazione2;
 import amm.esercitazione2.Classi.Professore;
 import amm.esercitazione2.Classi.Utente;
 import amm.esercitazione2.Classi.UtentiFactory;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class Login extends HttpServlet {
                     if(u instanceof Professore)
                     {
                         request.setAttribute("professore", u);
+                        request.setAttribute("alunni", UtentiFactory.getInstance().getStudenteList());
                         request.getRequestDispatcher("professore_autenticato.jsp").forward(request, response);
                     }
                     else

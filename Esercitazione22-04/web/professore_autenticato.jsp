@@ -97,12 +97,9 @@
                             <c:forEach var="alunno" items="${alunni}">
                                 <li>
                                     ${alunno.nome} ${alunno.cognome}
-                                    <a href="Login">
+                                    <a href="Registra?idAlunno=${alunno.id}">
                                         Registra esame 
                                     </a>
-                                    <!-- <a href="Registra?idAlunno=${alunno.id}">
-                                        Registra esame 
-                                    </a> -->
                                 </li>
                             </c:forEach>                            
                         </ul>

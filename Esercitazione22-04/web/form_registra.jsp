@@ -4,151 +4,139 @@
     Author     : alessandra
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package amm.esercitazione2.Classi;
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-import java.util.ArrayList;
+        <title>esAMMi - login</title>
+        <meta name="keywords" content="AMM esami docente">
+        <meta name="description" content="Una pagina per gestire le funzioni dei docenti">
+        <link rel="shortcut icon" type="image/x-icon" href="http://spano.sc.unica.it/amm2014/davide/esami14/images/favicon.ico">
+        <link href="css/responsive.css" rel="stylesheet" type="text/css" media="screen">
+        <style type="text/css"></style></head>
+    <body>
+        <div id="page">
+            <header>
+                <div class="social">
+                    <p>Accesso al sistema</p>
+                    <ul>
+                        <li id="facebook"><a href="http://www.facebook.com">facebook</a></li>
+                        <li id="twitter"><a href="https://twitter.com/">twitter</a></li>
+                        <li id="linkedin"><a href="http://www.linkedin.com/">linkedin</a></li>
+                    </ul>
+                </div>
+                <!--  header -->
+                <div id="header">
+                    <div id="logo">
+                        <h1>EsAMMi</h1>
+                    </div>
 
-/**
- *
- * @author Alessandro
- */
-public class UtentiFactory {
-    // Attributi
-    private static UtentiFactory singleton;
-    public static UtentiFactory getInstance() {
-        if (singleton == null) {
-            singleton = new UtentiFactory();
-        }
-        return singleton;
-    }
-    // Lista Materie
-    private ArrayList<Materia> listaMaterie = new ArrayList<Materia>();
-    // Lista Professori
-    private ArrayList<Utente> listaProfessori = new ArrayList<Utente>();
-    // Lista Studenti
-    private ArrayList<Utente> listaStudenti = new ArrayList<Utente>();
-    
-    /* Costruttore */
-    private UtentiFactory() {
-              
-        // Materie         
-        Materia materia_1 = new Materia();
-        materia_1.setNome("AMM");
-        listaMaterie.add(materia_1);
-        Materia materia_2 = new Materia();
-        materia_2.setNome("IUM");
-        listaMaterie.add(materia_2);
-        Materia materia_3 = new Materia();
-        materia_3.setNome("PR1");
-        listaMaterie.add(materia_3);
-        
-                // Professore 1
-        Professore prof_1 = new Professore();
-        prof_1.setUsername("SpanoDavide");
-        prof_1.setPassword("0");
-        prof_1.setNome("Davide");
-        prof_1.setCognome("Spano");
-        prof_1.setId(0);
-        ArrayList<Materia> arrayMaterieProf_1 = new ArrayList<Materia>();
-        arrayMaterieProf_1.add(materia_1);
-        arrayMaterieProf_1.add(materia_2);
-        prof_1.setCorsiAssegnati(arrayMaterieProf_1);
-        listaProfessori.add(prof_1);
-        // Professore 2
-        Professore prof_2 = new Professore();
-        prof_2.setUsername("ScateniRiccardo");
-        prof_2.setPassword("1");
-        prof_2.setNome("Riccardo");
-        prof_2.setCognome("Scateni");
-        prof_2.setId(1);
-        ArrayList<Materia> arrayMaterieProf_2 = new ArrayList<Materia>();
-        arrayMaterieProf_2.add(materia_3);
-        prof_2.setCorsiAssegnati(arrayMaterieProf_2);
-        listaProfessori.add(prof_2);
-        
-        // Studente 1
-        Studente studente_1 = new Studente();
-        studente_1.setUsername("CarcangiuAlessandro");
-        studente_1.setPassword("2");
-        studente_1.setNome("Alessandro");
-        studente_1.setCognome("Carcangiu");
-        studente_1.setId(2);
-        // Esami
-        Esame esame_1 = new Esame();
-        esame_1.setMateria(materia_1);
-        esame_1.setVoto(28);
-        Esame esame_2 = new Esame();
-        esame_2.setMateria(materia_2);
-        esame_2.setVoto(30);
-        ArrayList<Esame> arrayEsamiStudente_1 = new ArrayList<Esame>();
-        arrayEsamiStudente_1.add(esame_1);
-        arrayEsamiStudente_1.add(esame_2);
-        studente_1.setEsamiSuperati(arrayEsamiStudente_1);
-        listaStudenti.add(studente_1);
-        // Studente 2
-        Studente studente_2 = new Studente();
-        studente_2.setUsername("CherchiGianmarco");
-        studente_2.setPassword("3");
-        studente_2.setNome("Gianmarco");
-        studente_2.setCognome("Cherchi");
-        studente_2.setId(3);
-        // Esami
-        Esame esame_3 = new Esame();
-        esame_3.setMateria(materia_1);
-        esame_3.setVoto(30);
-        Esame esame_4 = new Esame();
-        esame_4.setMateria(materia_3);
-        esame_4.setVoto(30);
-        ArrayList<Esame> arrayEsamiStudente_2 = new ArrayList<Esame>();
-        arrayEsamiStudente_2.add(esame_3);
-        arrayEsamiStudente_2.add(esame_4);
-        studente_2.setEsamiSuperati(arrayEsamiStudente_2);
-        listaStudenti.add(studente_2);
-    }
-    
-    /* Metodi */
-    public ArrayList<Utente> getProfessoreList()
-    {
-        return listaProfessori;
-    }
-    public Utente getProfessore(int id)
-    {
-        for(Utente u : listaProfessori)
-        {
-            if(u.id == id)
-                return u;
-        }
-        
-        return null;
-    }
-    public ArrayList<Utente> getStudenteList()
-    {
-        return listaStudenti;
-    }
-    public Utente getStudente(int id)
-    {
-        for(Utente u : listaStudenti)
-        {
-            if(u.id == id)
-                return u;
-        }
-        
-        return null;
-    }
-    public ArrayList<Utente> getUserList() 
-    {
-        ArrayList<Utente> listaUtenti = new ArrayList<Utente>();
-        
-        listaUtenti.addAll(listaProfessori);
-        listaUtenti.addAll(listaStudenti);
-        
-        return listaUtenti;
-    }
-}
+                    <!-- select per la versione del menu mobile -->
+                    <select class="menu">
+                        <option>Menu</option>
+                    </select>
+                    <!-- tabs -->
+                    <div id="menu">
+                        <ul>
+                            <li><a class="current_page_item" href="#">Home</a></li>
+                        </ul>                   
+                    </div>
+                </div>
+            </header>
+            <!-- start page -->
+            <!--  sidebar 1 -->
+            <div id="sidebar1">
+                <ul>
+                    <li id="categories">
+                        <h2 class="icon-title">Navigazione</h2>
+                        <ul>
+                            <li><a href="#˙">Home</a></li>
+                        </ul>
+                    </li>
+                    <li id="external">
+                        <h2 class="icon-title">Link esterni</h2>
+                        <ul>
+                            <li><a href="http://www.unica.it/">Università di Cagliari</a></li>
+                            <li><a href="http://www.unica.it/">Facoltà</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div id="sidebar2">
+                <h2 class="icon-title" id="help">Istruzioni</h2>
+                <p>
+                    Pagina per l'accesso al sistema.
+                </p>
+            </div>
+
+            <!-- contenuto -->
+            <div id="content">
+                <div class="input-form">
+                    <h3>Registrazione Esame</h3>
+                    <form action="Registra" method="GET">
+                        <!-- Nome, Cognome e Matricola Studente -->
+                        <div>
+                            <label ${alunno.nome} ${alunno.cognome} Matricola: ${alunno.matricola}></label>
+                            <label for="Matricola">Matricola Studente</label>
+                            <input type="hidden" name="Matricola" id="Matricola" value="${alunno.id}" />       
+                        </div>
+
+                        <!-- Lista esami e voto -->
+                        <div>
+                            <label for="ListaEsami">Lista Esami</label>
+                            <select name="ListaEsami" id="ListaEsami">
+                                <c:forEach var ="materia" items="${professore.corsiAssegnati}">
+                                    <option value="${materia.nome}">
+                                        ${materia.nome}
+                                    </option>
+                                </c:forEach>
+                            </select>
+
+                            <label for="voto">Voto</label>
+                            <input type="range" min="18" max="31"
+                                   name="voto" id="voto">
+                        </div>
+
+                        <!-- Descrizione -->
+                        <div>
+                            <label for="Descrizione">Descrizione</label>
+                            <textarea name="Descrizione" id="Descrizione"
+                                      cols="40" rows="10" >Descrizione Esame</textarea>
+                        </div>
+
+                        <!-- Pulsanti submit e reset -->
+                        <div>
+                            <input type="submit" name="submit" value="Invia">
+                            <input type="reset" name="reset" value="Cancella">
+                        </div>           
+                    </form>
+                </div>
+            </div>
+
+            <div class="clear">
+            </div>
+            <!--  footer -->
+            <footer>
+                <div id="footer">
+                    <p>
+                        Applicazione d'esempio per l'esame di Amministrazione di Sistema
+                    </p>
+
+
+                </div>
+                <div class="validator">
+                    <p>
+                        <a href="http://validator.w3.org/check/referer" class="xhtml" title="Questa pagina contiene HTML valido">
+                            <abbr title="eXtensible HyperText Markup Language">HTML</abbr> Valido</a>
+                        <a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="Questa pagina ha CSS validi">
+                            <abbr title="Cascading Style Sheets">CSS</abbr> Valido</a>
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

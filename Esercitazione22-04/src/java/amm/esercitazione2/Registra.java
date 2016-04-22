@@ -39,5 +39,6 @@ public class Registra extends HttpServlet {
 
         int idAlunno = Integer.parseInt(request.getParameter("idAlunno"));
         request.setAttribute("alunno", UtentiFactory.getInstance().getStudente(idAlunno));
+        request.getRequestDispatcher("form_registra.jsp").forward(request, response);
     }
 }

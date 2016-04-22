@@ -77,7 +77,7 @@
             <div id="content">
                 <div class="input-form">
                     <h3>Registrazione Esame</h3>
-                    <form action="Registra" method="GET">
+                    <form action="Registra" method="POST">
                         <!-- Nome, Cognome e Matricola Studente -->
                         <div>
                             <label ${alunno.nome} ${alunno.cognome} Matricola: ${alunno.matricola}></label>

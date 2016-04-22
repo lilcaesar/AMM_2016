@@ -35,10 +35,11 @@ public class Registra extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
-        request.setAttribute("professore", UtentiFactory.getInstance().getProfessore((int) session.getAttribute("id")));
+        request.setAttribute("professore", UtentiFactory.getInstance().getProfessore((int)session.getAttribute("id")));
 
         int idAlunno = Integer.parseInt(request.getParameter("idAlunno"));
         request.setAttribute("alunno", UtentiFactory.getInstance().getStudente(idAlunno));
+    
         request.getRequestDispatcher("form_registra.jsp").forward(request, response);
     }
 }

@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7-apr-2016, 10.12.16
+    Author     : alessandra
+*/
+
+body
+{
+    /*Imposto uno sfondo e un font*/
+    background-image: url('img/background.jpg');
+    font: 1em "Open Sans", Arial, sans-serif;
+}
+
+h1, h2, h3
+{
+    margin: 0px;
+    color: blue;
+}
+
+a:link
+{
+    text-decoration: underline;
+    color: purple;
+}
+
+a:visited
+{
+    text-decoration: underline;
+    color: purple;
+}
+
+a:hover
+{
+    font-weight: bold;
+}
+
+/*Imposto la separazione dei campi dei form*/
+label::after, label::before {
+    content: '\A';
+    white-space: pre;
+}
+
+/*Bordi della tabella*/
+table, th, td {
+   border: 1px solid black;
+   border-collapse: collapse;
+}
+table{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+th{
+    font-size: 1.5em;
+    font-family: "Times New Roman", Times, serif;  
+}
+
+/*Alterno gli sfondi per le righe*/
+tr:nth-child(even){
+    background-color: #9999ff;
+}
+
+tr:nth-child(odd){
+    background-color: #ccccff;
+}

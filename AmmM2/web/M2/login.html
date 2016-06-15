@@ -15,40 +15,61 @@ and open the template in the editor.
         <link href="./style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
-        <!--Sezione con i link per navigare nel sito-->
-        <nav id="sidebarSinistra">
-            <ul>
-                <li>
-                    <a href="./descrizione.html"> Descrizione sito </a>
-                </li>
-                <li>
-                    <a href="./venditore.html"> Sezione venditore </a>
-                </li>
-                <li>
-                    <a href="./cliente.html"> Sezione cliente </a>
-                </li>
-            </ul>
-        </nav>
-        <header>
+        <div id="page">
+            <header>
 
-        </header>
-        <div id="content">
-            <h1>Login</h1>
-            <!--Form per il login-->
-            <form method="GET">
-                <div id="loginForm" class="form">
-                    <label for="user">Nome utente</label>
-                    <input type="text" name="user"
-                           id="user" value="utente" />
-                    <label for="pswd">Password</label>
-                    <input type="password" name="pswd” "
-                           id="pswd" value="password" />
-                </div>
-                <div id="loginSubmit">
-                    <input type="submit" value="Invia"/>
-                    <input type="reset" value="Reimposta"/>
-                </div>
-            </form>
+            </header>
+            <!--Sezione con i link per navigare nel sito-->
+            <nav id="sidebarSinistra">
+                <ul>
+                    <li>
+                        <a href="./descrizione.html"> Descrizione sito </a>
+                    </li>
+                    <li>
+                        <a href="./venditore.html"> Sezione venditore </a>
+                    </li>
+                    <li>
+                        <a href="./cliente.html"> Sezione cliente </a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="sidebarDestra">
+                <h3>Chi siamo?</h3>
+                <p>Il miglior sito di eCommerce di Quartucciu 
+                    specializzato nella rivendita di droni, radiocomandi, visori e 
+                    accessori legati all'esperienza di volo in prima persona tramite 
+                    droni di vario tipo.</p>
+            </div>
+            <div id="content">
+                <h1>Login</h1>
+                <!--Form per il login-->
+                <form method="GET">
+                    <div id="loginForm" class="form">
+                        <label for="user">Nome utente</label>
+                        <input type="text" name="user"
+                               id="user" value="utente" />
+                        <label for="pswd">Password</label>
+                        <input type="password" name="pswd” "
+                               id="pswd" value="password" />
+                    </div>
+                    <div id="loginSubmit">
+                        <input type="submit" value="Invia"/>
+                        <input type="reset" value="Reimposta"/>
+                    </div>
+                </form>
+            </div>
+            <footer>            
+                <a href="http://validator.w3.org/check/referer">
+                    <img style="border:0;width:100px;height:30px"
+                         src="http://www.w3.org/Icons/valid-xhtml10"
+                         alt="Validatore HTML" />
+                </a>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                    <img style="border:0;width:100px;height:30px"
+                         src="http://jigsaw.w3.org/css-validator/images/vcss"
+                         alt="Validatore CSS" />
+                </a>
+            </footer>
         </div>
     </body>
 </html>

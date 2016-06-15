@@ -119,7 +119,7 @@ footer {
 }
 
 footer a{
-    heigth:40px;
+    height: 40px;
     padding: 5px;
 }
 
@@ -132,7 +132,7 @@ footer a{
         background-color: #9999ff;
         margin-right: 2%;
     }
-    
+
     #sidebarDestra{
         float: right;
         position: absolute;
@@ -150,9 +150,48 @@ footer a{
 }
 
 @media only screen and (min-width: 480px)and (max-width: 1024px){
-    
+    #sidebarSinistra{
+        position: absolute;
+        float: left;
+        width: 20%;
+        height: 100%;
+        background-color: #9999ff;
+        margin-right: 2%;
+    }
+
+    #sidebarDestra{
+        display: none;
+    }
+
+    #content{
+        margin-left: 20%;
+        margin-right: 0%;
+    }
 }
 
 @media only screen and (max-width: 480px) {
+    #sidebarDestra{
+        display: none;
+    }
 
+    #sidebarSinistra{
+        position: absolute;
+        width: 100%;
+        background-color: #9999ff;
+    }
+
+    #sidebarSinistra ul{
+        list-style-type: none;
+        overflow: hidden;
+    }
+
+    #sidebarSinistra li{
+        float: left;
+    }
+
+    #sidebarSinistra li a{
+        display: inline-block;
+        text-align: center;
+        padding: 14px 16px;
+    }
 }

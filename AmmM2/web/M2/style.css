@@ -21,6 +21,10 @@ h1, h2, h3
     color: blue;
 }
 
+h1{
+    text-align: center;
+}
+
 a:link
 {
     text-decoration: underline;
@@ -46,8 +50,8 @@ label::after, label::before {
 
 /*Bordi della tabella*/
 table, th, td {
-   border: 1px solid black;
-   border-collapse: collapse;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 table{
     margin-left: 10%;
@@ -65,4 +69,29 @@ tr:nth-child(even){
 
 tr:nth-child(odd){
     background-color: #ccccff;
+}
+
+/*Centro i form e i rispettivi pulsanti*/
+.form, #loginSubmit, #nuovoOggettoSubmit {
+    text-align: center;
+}
+
+/*Rendo i pulsanti più gradevoli e corenti con lo sfondo*/
+input[type=submit], input[type=reset]{
+    background-color: #3d3d4c;
+    color: #dbdbff;
+}
+
+/*Effettuo lo stesso con i campi del form*/
+.form input[type=text], .form input[type=password], .form input[type=url], .form input[type=number], .form textarea{
+    border: 2px #9999ff solid;
+    box-sizing: border-box;
+    background-color: #ccccff;
+    color: #000030;
+}
+
+/*Differenzio la vista in base al focus*/
+.form input[type=text]:focus, .form input[type=password]:focus, .form input[type=url]:focus, .form input[type=number]:focus, .form textarea:focus{
+    border: 2px red solid;
+    background-color: white;
 }

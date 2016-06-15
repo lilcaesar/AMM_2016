@@ -21,7 +21,7 @@ h1, h2, h3
     color: blue;
 }
 
-h1{
+h1, h2{
     text-align: center;
 }
 
@@ -80,6 +80,7 @@ tr:nth-child(odd){
 input[type=submit], input[type=reset]{
     background-color: #3d3d4c;
     color: #dbdbff;
+    cursor: pointer;
 }
 
 /*Effettuo lo stesso con i campi del form*/
@@ -88,10 +89,24 @@ input[type=submit], input[type=reset]{
     box-sizing: border-box;
     background-color: #ccccff;
     color: #000030;
+    cursor: pointer;
 }
 
 /*Differenzio la vista in base al focus*/
 .form input[type=text]:focus, .form input[type=password]:focus, .form input[type=url]:focus, .form input[type=number]:focus, .form textarea:focus{
     border: 2px red solid;
     background-color: white;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    #sidebarSinistra{
+        float: left;        
+        padding-left: 3px;
+        width: 20%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    
 }

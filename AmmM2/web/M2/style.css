@@ -105,22 +105,42 @@ header{
     width: 100%;
 }
 
+#page{
+    position: relative;
+}
+
 footer {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    height: 30px;
+    padding: 5px;
     text-align: center;
     width: 100%;
+    background-color: #3d3d4c;
+}
+
+footer a{
+    heigth:40px;
+    padding: 5px;
 }
 
 @media only screen and (min-width: 1024px) {
     #sidebarSinistra{
+        position: absolute;
         float: left;
-        width: 15%;
+        width: 13%;
+        height: 100%;
+        background-color: #9999ff;
+        margin-right: 2%;
     }
     
     #sidebarDestra{
         float: right;
-        width: 15%;
+        position: absolute;
+        left: 87%;
+        width: 13%;
+        height: 100%;
+        background-color: #9999ff;
+        margin-left: 2%;
     }
 
     #content{

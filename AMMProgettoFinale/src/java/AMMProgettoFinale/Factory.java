@@ -69,14 +69,14 @@ public class Factory {
                 
                 while(res2.next())
                 {
-                    Prodotto o = new Prodotto();
-                    o.setId(res2.getInt("id"));
-                    o.setNome(res2.getString("nome"));
-                    o.setURLImmagine(res2.getString("imageURL"));
-                    o.setDescrizione(res2.getString("descrizione"));
-                    o.setPrezzo(res2.getDouble("prezzo"));
-                    o.setDisponibilita(res2.getInt("disponibilita"));
-                    venditore.getProdottiVenditore().add(o);
+                    Prodotto p = new Prodotto();
+                    p.setId(res2.getInt("id"));
+                    p.setNome(res2.getString("nome"));
+                    p.setURLImmagine(res2.getString("imageURL"));
+                    p.setDescrizione(res2.getString("descrizione"));
+                    p.setPrezzo(res2.getDouble("prezzo"));
+                    p.setDisponibilita(res2.getInt("disponibilita"));
+                    venditore.getProdottiVenditore().add(p);
                 }
                 
                 st.close();
@@ -113,6 +113,102 @@ public class Factory {
         catch(SQLException e)
         {
         
+        }
+        return null;
+    }
+    
+    public Venditore getVenditore(int id)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
+            // Query
+            String query = "select * from venditore " + "where id = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, id);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                Venditore venditore = new Venditore();
+                venditore.setId(res.getInt("id"));
+                venditore.setNome(res.getString("nome"));
+                venditore.setCognome(res.getString("cognome"));
+                venditore.setUsername(res.getString("username"));
+                venditore.setPassword(res.getString("password"));
+                venditore.setSaldo(res.getDouble("saldo"));
+                // Oggetti in vendita da questo venditore
+                query = "select * from prodotto"+ " where prodotto.idVenditore = "+ venditore.getId();
+                Statement st= conn.createStatement();
+                ResultSet res2= st.executeQuery(query);
+                
+                while(res2.next())
+                {
+                    Prodotto p = new Prodotto();
+                    p.setId(res2.getInt("id"));
+                    p.setNome(res2.getString("nome"));
+                    p.setURLImmagine(res2.getString("imageURL"));
+                    p.setDescrizione(res2.getString("descrizione"));
+                    p.setPrezzo(res2.getDouble("prezzo"));
+                    p.setDisponibilita(res2.getInt("disponibilita"));
+                    venditore.getProdottiVenditore().add(p);
+                }                 
+                st.close();
+                stmt.close();
+                conn.close();
+                return venditore;
+            }   
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public Cliente getCliente(int id)
+    {
+        try 
+        {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
+            String query = "select * from cliente "+ "where id = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, id);
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+           
+             // ciclo sulle righe restituite
+            if(res.next()) 
+            {
+                Cliente cliente = new Cliente();
+                cliente.setId(res.getInt("id"));
+                cliente.setNome(res.getString("nome"));
+                cliente.setCognome(res.getString("cognome"));
+                cliente.setUsername(res.getString("username"));
+                cliente.setPassword(res.getString("password"));
+                cliente.setSaldo(res.getDouble("saldo"));
+                
+                stmt.close();
+                conn.close();
+                return cliente;
+            }
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
         }
         return null;
     }

@@ -5,12 +5,29 @@
  */
 package AMMProgettoFinale;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author root
  */
 public class Venditore extends Utente{
+    private ArrayList<Prodotto> prodottiVenditore = new ArrayList<>();
     public Venditore(){
         super();
+    }
+
+    /**
+     * @return the prodottiVenditore
+     */
+    public ArrayList<Prodotto> getProdottiVenditore() {
+        return prodottiVenditore;
+    }
+
+    /**
+     * @param prodottiVenditore the prodottiVenditore to set
+     */
+    public void setProdottiVenditore(ArrayList<Prodotto> prodottiVenditore) {
+        this.prodottiVenditore = prodottiVenditore;
     }
 }

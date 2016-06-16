@@ -9,10 +9,13 @@ package AMMProgettoFinale;
  *
  * @author root
  */
-public class prodotto {
+public class Prodotto {
     private String nome;
     private double prezzo;
     private int disponibilita;
+    private String descrizione;
+    private String URLImmagine;
+    private int id;
 
     /**
      * @return the nome
@@ -54,5 +57,47 @@ public class prodotto {
      */
     public void setDisponibilita(int disponibilita) {
         this.disponibilita = disponibilita;
+    }
+
+    /**
+     * @return the descrizione
+     */
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    /**
+     * @param descrizione the descrizione to set
+     */
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    /**
+     * @return the URLImmagine
+     */
+    public String getURLImmagine() {
+        return URLImmagine;
+    }
+
+    /**
+     * @param URLImmagine the URLImmagine to set
+     */
+    public void setURLImmagine(String URLImmagine) {
+        this.URLImmagine = URLImmagine;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }

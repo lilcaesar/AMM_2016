@@ -1,0 +1,19 @@
+Cliente:
+id;
+nome;
+cognome;
+saldo;
+
+Venditore:
+id;
+nome;
+cognome;
+saldo;
+
+Prodotto:
+id;
+nome;
+prezzo;
+disponibilità;
+
+Per ogni prodotto un venditore, per ogni venditore molti prodotti;

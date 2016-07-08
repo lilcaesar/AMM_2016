@@ -332,10 +332,123 @@ public class Factory {
             stmt.setString(6, URLImmagine);
             stmt.setInt(7, idVenditore);
 
-            //Esegui query
             stmt.executeUpdate();
             stmt.close();
             c.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void modificaProdotto(Integer id, String nome, String URLImmagine, String descrizione, Double prezzo, Integer disponibilita) {
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
+            String query = "UPDATE prodotto SET nome = ? , URLImmagine = ? , descrizione = ?, prezzo = ?, disponibilita = ? WHERE id = ?";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, nome);
+            st.setString(2, URLImmagine);
+            st.setString(3, descrizione);
+            st.setDouble(4, prezzo);
+            st.setInt(5, disponibilita);
+            st.setInt(6, id);
+
+            st.executeUpdate();
+            st.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public Integer aquisto(int idCliente, int idProdotto) throws SQLException {
+        Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
+
+        PreparedStatement modificaSaldoVenditore = null;
+        PreparedStatement modificaSaldoCliente = null;
+        PreparedStatement modificaDisponibilitaProdotto = null;
+
+        String modificaCliente = "UPDATE cliente SET saldo = ? where id = ?";
+        String modificaVenditore = "UPDATE venditore SET saldo = ? where id = ?";
+        String modificaProdotto = "UPDATE prodotto SET disponibilita = ? where id = ?";
+        try {
+            conn.setAutoCommit(false);
+            
+            modificaSaldoVenditore = conn.prepareStatement(modificaVenditore);
+            modificaSaldoCliente = conn.prepareStatement(modificaCliente);
+            modificaDisponibilitaProdotto = conn.prepareStatement(modificaProdotto);
+
+            Double saldoC = getCliente(idCliente).getSaldo();
+            Double saldoV = getVenditore(getIdVenditore(idProdotto)).getSaldo();
+            Double prezzo = getProdotto(idProdotto).getPrezzo();
+            Integer disponibilita = getProdotto(idProdotto).getDisponibilita();
+            
+            if ((saldoC > prezzo) && (disponibilita != 0)) {
+                saldoC -= prezzo;
+                saldoV += prezzo;
+                disponibilita--;
+            } else {
+                if (disponibilita == 0) {
+                    return 2;//disponibilità esaurita
+                }
+                return 3;//fondi insufficienti
+            }
+
+            modificaSaldoVenditore.setDouble(1, saldoV);
+            modificaSaldoVenditore.setInt(2, getIdVenditore(idProdotto));
+
+            modificaSaldoCliente.setDouble(1, saldoC);
+            modificaSaldoCliente.setInt(2, idCliente);
+
+            modificaDisponibilitaProdotto.setInt(1, disponibilita);
+            modificaDisponibilitaProdotto.setInt(2, idProdotto);
+
+            int r1 = modificaSaldoVenditore.executeUpdate();
+            int r2 = modificaSaldoCliente.executeUpdate();
+            int r3 = modificaDisponibilitaProdotto.executeUpdate();
+
+            if ((r1 != 1) || (r2 != 1) || (r3 != 1)) {
+                conn.rollback();
+            }
+            conn.commit();
+            return 1;//Successo
+
+        } catch (SQLException e) {
+            conn.rollback();
+            throw e;
+        } finally {
+            if (modificaSaldoVenditore != null) {
+                modificaSaldoVenditore.close();
+            }
+            if (modificaSaldoCliente != null) {
+                modificaSaldoCliente.close();
+            }
+            if (modificaDisponibilitaProdotto != null) {
+                modificaDisponibilitaProdotto.close();
+            }
+
+            conn.setAutoCommit(true);
+            conn.close();
+        }
+    }
+    
+    public void eliminaProdotto(int id) {
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
+
+            String query = "DELETE FROM prodotto " + "WHERE id = " + id;
+            
+            Statement st = conn.createStatement();
+
+            st.executeUpdate(query);
+
+            st.close();
+            conn.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

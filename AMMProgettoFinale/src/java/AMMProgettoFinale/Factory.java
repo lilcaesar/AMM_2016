@@ -270,7 +270,7 @@ public class Factory {
     public ArrayList<Prodotto> getProdotti() {
         ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
         try {
-            Connection conn = DriverManager.getConnection(connectionString, "mariorossi", "0");
+            Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
             Statement stmt = conn.createStatement();
             String query = "select * from prodotto";
             ResultSet set = stmt.executeQuery(query);

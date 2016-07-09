@@ -4,6 +4,7 @@
     Author     : root
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,6 +40,8 @@
             
             <div id="content">
                 <!--Tabella dei prodotti-->
+                <c:choose>
+                    <c:when test="${loggedIn == true && cliente.getId()==id}">
                 <table>
                     <tr>
                         <th>Oggetto</th>

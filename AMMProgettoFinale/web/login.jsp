@@ -45,12 +45,12 @@
                 <!--Form per il login-->
                 <form method="GET">
                     <div id="loginForm" class="form">
-                        <label for="user">Nome utente</label>
+                        <label for="utente">Nome utente</label>
                         <input type="text" name="utente"
-                               id="utente" value="utente" />
-                        <label for="pswd">Password</label>
+                               id="utente" />
+                        <label for="password">Password</label>
                         <input type="password" name="password” "
-                               id="password" value="password" />
+                               id="password" />
                     </div>
                     <div id="loginSubmit">
                         <input type="submit" name="submit" value="Invia"/>

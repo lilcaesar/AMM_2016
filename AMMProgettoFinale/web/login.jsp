@@ -46,11 +46,11 @@
                 <form method="GET">
                     <div id="loginForm" class="form">
                         <label for="user">Nome utente</label>
-                        <input type="text" name="user"
-                               id="user" value="utente" />
+                        <input type="text" name="utente"
+                               id="utente" value="utente" />
                         <label for="pswd">Password</label>
-                        <input type="password" name="pswd” "
-                               id="pswd" value="password" />
+                        <input type="password" name="password” "
+                               id="password" value="password" />
                     </div>
                     <div id="loginSubmit">
                         <input type="submit" name="submit" value="Invia"/>

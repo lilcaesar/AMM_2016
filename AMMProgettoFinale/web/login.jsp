@@ -49,8 +49,7 @@
                         <input type="text" name="utente"
                                id="utente" />
                         <label for="password">Password</label>
-                        <input type="password" name="password” "
-                               id="password" />
+                        <input type="password" name="password" id="password" />
                     </div>
                     <div id="loginSubmit">
                         <input type="submit" name="submit" value="Invia"/>

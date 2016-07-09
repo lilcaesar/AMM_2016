@@ -35,76 +35,41 @@
                     </ul>
                 </nav>
             </div>
-            
+
             <jsp:include page="sidebarDestra.jsp"/>
-            
+
             <div id="content">
                 <!--Tabella dei prodotti-->
                 <c:choose>
                     <c:when test="${loggedIn == true && cliente.getId()==id}">
-                <table>
-                    <tr>
-                        <th>Oggetto</th>
-                        <th>Immagine</th>
-                        <th>Disponibilità</th>
-                        <th>Prezzo</th>
-                        <th>Carrello</th>
-                    </tr>
-                    <tr>
-                        <td>STORM Racing Drone (RTF / Type-A V2)</td>
-                        <td>
-                            <img title="drone" alt="immagine drone"
-                                 src="img/drone.jpg" width="240" height="240">
-                        </td>
-                        <td>4</td>
-                        <td>399 euro</td>
-                        <td><a href="./cliente.html">Aggiungi al carrello</a></td>
-                    </tr>
-                    <tr>
-                        <td>RadioLink AT9</td>
-                        <td>
-                            <img title="radiocomando" alt="immagine radiocomando"
-                                 src="img/radiocomando.jpg" width="240" height="240">
-                        </td>
-                        <td>5</td>
-                        <td>199 euro</td>
-                        <td><a href="./cliente.html">Aggiungi al carrello</a></td>
-                    </tr>
-                    <tr>
-                        <td>Walkera FPV Goggle 2</td>
-                        <td>
-                            <img title="visore" alt="immagine visore"
-                                 src="img/visore.jpg" width="240" height="240">
-                        </td>
-                        <td>3</td>
-                        <td>99 euro</td>
-                        <td><a href="./cliente.html">Aggiungi al carrello</a></td>
-                    </tr>
-                    <tr>
-                        <td>5.8Ghz Clover Leaf Antenna(Female Receptacle/Angled)</td>
-                        <td>
-                            <img title="antenna" alt="immagine antenna"
-                                 src="img/antenna.jpg" width="240" height="240">
-                        </td>
-                        <td>3</td>
-                        <td>29 euro</td>
-                        <td><a href="./cliente.html">Aggiungi al carrello</a></td>
-                    </tr>
-                    <tr>
-                        <td>Set Ricambi STORM Racing Drone (RTF / Type-A V2)</td>
-                        <td>
-                            <img title="ricambio" alt="immagine ricambio"
-                                 src="img/ricambio.jpg" width="240" height="320">
-                        </td>
-                        <td>10</td>
-                        <td>120 euro</td>
-                        <td><a href="./cliente.jsp">Aggiungi al carrello</a></td>
-                    </tr>
-                </table>
+                        <table>
+                            <tr>
+                                <th>Oggetto</th>
+                                <th>Immagine</th>
+                                <th>Disponibilità</th>
+                                <th>Prezzo</th>
+                                <th>Carrello</th>
+                            </tr>
+                            
+                            <c:forEach var="prodotto" items="${listaProdotti}">
+                                <tr>
+                                    <td>${prodotto.getNome()}</td>
+                                    <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getImmagine()}"> </td>
+                                    <td>${prodotto.getDisponibilita()}</td>
+                                    <td>${prodotto.getPrezzo()}</td>
+                                    <td> <a href="cliente.html?idProdotto="${prodotto.getId()}">Aggiungi al carrello</a> </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:when>
+                    <c:otherwise>
+                        <jsp:include page="erroreLogin.jsp"/>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
-            
+
         <jsp:include page="footer.jsp"/>
-        
+
     </body>
 </html>

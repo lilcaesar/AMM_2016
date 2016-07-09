@@ -8,10 +8,59 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Mattia Samuel Mancosu">
+        <meta name="description" content="Pagina di login">
+        <meta name="keywords" content="eCommerce, drone, RC, FPV, FirstPersonView">
+        <link href="./style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div id="page">
+            <header>
+                <h1 id="titoloSito">FirstPersonView Store</h1>
+            </header>
+            <!--Sezione con i link per navigare nel sito-->
+            <div  id="sidebarSinistra">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="./descrizione.jsp"> Descrizione sito </a>
+                        </li>
+                        <li>
+                            <a href="./venditore.jsp"> Sezione venditore </a>
+                        </li>
+                        <li>
+                            <a href="./cliente.jsp"> Sezione cliente </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <jsp:include page="sidebarDestra.jsp"/>
+            
+            <div id="content">
+                <h2>Login</h2>
+                <!--Form per il login-->
+                <form method="GET">
+                    <div id="loginForm" class="form">
+                        <label for="user">Nome utente</label>
+                        <input type="text" name="user"
+                               id="user" value="utente" />
+                        <label for="pswd">Password</label>
+                        <input type="password" name="pswd” "
+                               id="pswd" value="password" />
+                    </div>
+                    <div id="loginSubmit">
+                        <input type="submit" value="Invia"/>
+                        <input type="reset" value="Reimposta"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <jsp:include page="footer.jsp"/>
+            
     </body>
 </html>

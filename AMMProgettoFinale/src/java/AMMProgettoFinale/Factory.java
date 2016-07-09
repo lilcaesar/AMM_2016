@@ -105,7 +105,7 @@ public class Factory {
             stmt.close();
             conn.close();
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
         return null;
     }

@@ -59,7 +59,7 @@
                         <input type="number" name="disponibilità" id="disponibilità"/>
                     </div>
                     <div id="nuovoOggettoSubmit">
-                        <input type="submit" value="Invia"/>
+                        <input type="submit" name="submit" value="Invia"/>
                         <input type="reset" value="Reimposta"/>
                     </div>
                 </form>

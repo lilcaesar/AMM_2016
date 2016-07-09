@@ -53,7 +53,7 @@
                                id="pswd" value="password" />
                     </div>
                     <div id="loginSubmit">
-                        <input type="submit" value="Invia"/>
+                        <input type="submit" name="submit" value="Invia"/>
                         <input type="reset" value="Reimposta"/>
                     </div>
                 </form>

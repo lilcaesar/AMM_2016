@@ -36,6 +36,7 @@ CREATE TABLE prodotto
     disponibilita INTEGER,
     descrizione VARCHAR(256),
     URLImmagine VARCHAR(128),
+    idVenditore INTEGER,
     FOREIGN KEY (idVenditore) REFERENCES venditore(id)
 );
 

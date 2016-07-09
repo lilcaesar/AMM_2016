@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,7 +33,30 @@ public class venditore extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Sessione
+        HttpSession session = request.getSession(false);
         
+        if(request.getParameter("submit") != null) {
+            String name = request.getParameter("name");
+            String urlImmagine = request.getParameter("urlImmagine");
+            String descrizione = request.getParameter("descrizione");
+            Double prezzo = Double.parseDouble(request.getParameter("prezzo"));
+            Integer disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
+            
+            Integer idVenditore = (Integer)(session.getAttribute("id"));
+            
+            Prodotto p = new Prodotto();
+            p.setDescrizione(descrizione);
+            p.setDisponibilita(disponibilita);
+            p.setNome(name);
+            p.setPrezzo(prezzo);
+            p.setURLImmagine(urlImmagine);
+            
+            Factory.getInstance().aggiungiProdotto(name, prezzo, disponibilita, urlImmagine, descrizione, idVenditore);
+            
+            request.setAttribute("Prodotto", p);
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

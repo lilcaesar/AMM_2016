@@ -64,11 +64,11 @@ public class login extends HttpServlet {
                 session.setAttribute("id", u.getId());
 
                 if (u instanceof Cliente) {
-                    request.setAttribute("cliente", u);
+                    session.setAttribute("cliente", u);
                     request.setAttribute("listaProdotti", Factory.getInstance().getProdotti());
                     request.getRequestDispatcher("cliente.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("venditore", u);
+                    session.setAttribute("venditore", u);
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);
                 }
             }

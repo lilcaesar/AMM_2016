@@ -46,7 +46,7 @@
                     <c:when test="${loggedIn == true && venditore.getId()==id}">
                         <h1>Inserimento nuovo oggetto</h1>
                         <!--Form per l'inserimento di un nuovo oggeto-->
-                        <form method="GET">
+                        <form method="post" action="venditore.html">
                             <div id="nuovoOggettoForm" class="form">
                                 <label for="name">Nome oggetto</label>
                                 <input type="text" name="name"
@@ -58,8 +58,8 @@
                                 <textarea rows="4" cols="20" name="descrizione" id="descrizione">Descrizione</textarea>
                                 <label for="prezzo">Prezzo</label>
                                 <input type="number" name="prezzo" id="prezzo"/>
-                                <label for="disponibilità">Disponibilità</label>
-                                <input type="number" name="disponibilità" id="disponibilità"/>
+                                <label for="disponibilita">Disponibilità</label>
+                                <input type="number" name="disponibilita" id="disponibilita"/>
                             </div>
                             <div id="nuovoOggettoSubmit">
                                 <input type="submit" name="submit" value="Invia"/>

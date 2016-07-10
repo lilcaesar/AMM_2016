@@ -56,7 +56,7 @@ public class venditore extends HttpServlet {
             
             request.setAttribute("Prodotto", p);
             session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer)session.getAttribute("id")).getProdottiVenditore());
-            request.getRequestDispatcher("nuovoProdotto.jsp").forward(request, response);
+            request.getRequestDispatcher("inserimentoProdotto.jsp").forward(request, response);
         }
     }
 

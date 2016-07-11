@@ -40,12 +40,20 @@ public class cliente extends HttpServlet {
 
         if (request.getParameter("idProdotto") != null) {
             Integer idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
-            Integer idVenditore = (Integer) (session.getAttribute("id"));
-            Integer risultatoOperazione;
+            request.setAttribute("prodotto", Factory.getInstance().getProdotto(idProdotto));
+            request.getRequestDispatcher("carrello.jsp").forward(request, response);
+        }
+        if (request.getParameter("idProdottoCarrello") != null) {
+            Integer idProdottoCarrello = Integer.parseInt(request.getParameter("idProdottoCarrello"));
+            Integer idCliente = (Integer) (session.getAttribute("id"));
+            Integer risultatoOperazione = 0;
             try {
-                risultatoOperazione = Factory.getInstance().aquisto(idVenditore, idProdotto);
+                risultatoOperazione = Factory.getInstance().aquisto(idCliente, idProdottoCarrello);
             } catch (SQLException ex) {
                 Logger.getLogger(cliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            switch(risultatoOperazione){
+                
             }
         }
     }

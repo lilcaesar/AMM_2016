@@ -393,9 +393,9 @@ public class Factory {
                 disponibilita--;
             } else {
                 if (disponibilita == 0) {
-                    return 2;//disponibilità esaurita
+                    return 3;//disponibilità esaurita
                 }
-                return 3;//fondi insufficienti
+                return 2;//fondi insufficienti
             }
 
             modificaSaldoVenditore.setDouble(1, saldoV);

@@ -52,8 +52,28 @@ public class cliente extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-            switch(risultatoOperazione){
-                
+            switch (risultatoOperazione) {
+                case 1:
+                    request.setAttribute("risultatoAcquisto", "Aquisto effettuato correttamente");
+                    request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
+                    session.setAttribute("saldo", Factory.getInstance().getCliente(idCliente).getSaldo());
+                    session.setAttribute("listaProdotti", Factory.getInstance().getProdotti());
+                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                    break;
+                case 2:
+                    request.setAttribute("risultatoAcquisto", "Aquisto fallito, saldo insufficiente");
+                    request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
+                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                    break;
+                case 3:
+                    request.setAttribute("risultatoAcquisto", "Aquisto fallito, disponibilità insufficiente");
+                    request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
+                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
+                    break;
+                default:
+                    request.setAttribute("risultatoAcquisto", "Aquisto fallito, errore sconosciuto");
+                    request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
+                    request.getRequestDispatcher("carrello.jsp").forward(request, response);
             }
         }
     }

@@ -45,9 +45,8 @@
                     <li> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}"> </td>
                     <li>${prodotto.getDisponibilita()}</td>
                     <li>${prodotto.getPrezzo()}</td>
-                    <li> <a href="cliente.html?idProdottoCarrello="${prodotto.getId()}">Conferma acquisto</a> </td>
+                    <li><button name="Submit" type="submit" value="conferma"><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></button></td>
                 </ul>
-                <button name="Submit" type="submit" value="conferma"><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></button>
                 <p>${risultatoAcquisto}</p>
             </div>
         </div>

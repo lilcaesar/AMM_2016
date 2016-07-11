@@ -415,7 +415,7 @@ public class Factory {
                 conn.rollback();
             }
             conn.commit();
-            return 1;//Successo
+            return 1;
 
         } catch (SQLException e) {
             conn.rollback();

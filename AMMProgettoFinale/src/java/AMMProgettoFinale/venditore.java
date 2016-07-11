@@ -54,7 +54,7 @@ public class venditore extends HttpServlet {
             
             Factory.getInstance().aggiungiProdotto(name, prezzo, disponibilita, urlImmagine, descrizione, idVenditore);
             
-            request.setAttribute("Prodotto", p);
+            request.setAttribute("prodotto", p);
             session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer)session.getAttribute("id")).getProdottiVenditore());
             request.getRequestDispatcher("inserimentoProdotto.jsp").forward(request, response);
         }

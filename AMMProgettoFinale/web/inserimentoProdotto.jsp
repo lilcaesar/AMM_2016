@@ -43,10 +43,10 @@
                 <h3>Ecco il prodotto che hai inserito</h3>
                 <ul>
                     <li>${prodotto.getNome()}</li>
-                    <li><image src="${oggetto.getURLImmagine()}"></li>
-                    <li>${oggetto.getDescrizione()}</li>
-                    <li> ${oggetto.getDisponibilita()}</li>
-                    <li>${oggetto.getPrezzo()}</li>
+                    <li><image src="${prodotto.getURLImmagine()}"  alt="Immagine di ${prodotto.getNome()}"></li>
+                    <li>${prodotto.getDescrizione()}</li>
+                    <li> ${prodotto.getDisponibilita()}</li>
+                    <li>${prodotto.getPrezzo()}</li>
                 </ul>
             </div>
         </div>

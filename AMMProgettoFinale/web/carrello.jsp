@@ -41,11 +41,11 @@
                 <h1>Conferma acquisto prodotto</h1>
                 <h3>Ecco il prodotto che vuoi aquistare</h3>
                 <ul>
-                    <li>${prodotto.getNome()}</td>
-                    <li> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}"> </td>
-                    <li>${prodotto.getDisponibilita()}</td>
-                    <li>${prodotto.getPrezzo()}</td>
-                    <li><button name="Submit" type="submit" value="conferma"><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></button></td>
+                    <li>${prodotto.getNome()}</li>
+                    <li> <img title="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" alt="${prodotto.getNome()}"> </li>
+                    <li>${prodotto.getDisponibilita()}</li>
+                    <li>${prodotto.getPrezzo()}</li>
+                    <li><button name="Submit" type="submit" value="conferma"><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></button></li>
                 </ul>
                 <p>${risultatoAcquisto}</p>
             </div>

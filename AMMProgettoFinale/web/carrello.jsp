@@ -38,15 +38,17 @@
             <jsp:include page="sidebarDestra.jsp"/>
 
             <div id="content">
-
+                <h1>Conferma acquisto prodotto</h1>
+                <h3>Ecco il prodotto che vuoi aquistare</h3>
                 <ul>
                     <li>${prodotto.getNome()}</td>
-                    <li> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getImmagine()}"> </td>
+                    <li> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}"> </td>
                     <li>${prodotto.getDisponibilita()}</td>
                     <li>${prodotto.getPrezzo()}</td>
-                    <li> <a href="cliente.html?idAcquisto="${prodotto.getId()}">Conferma acquisto</a> </td>
+                    <li> <a href="cliente.html?idProdottoCarrello="${prodotto.getId()}">Conferma acquisto</a> </td>
                 </ul>
-
+                <button name="Submit" type="submit" value="conferma"><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></button>
+                <p>${risultatoAcquisto}</p>
             </div>
         </div>
 

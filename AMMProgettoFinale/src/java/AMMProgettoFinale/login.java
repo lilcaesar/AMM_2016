@@ -65,10 +65,11 @@ public class login extends HttpServlet {
 
                 if (u instanceof Cliente) {
                     session.setAttribute("cliente", u);
-                    request.setAttribute("listaProdotti", Factory.getInstance().getProdotti());
+                    session.setAttribute("listaProdotti", Factory.getInstance().getProdotti());
                     request.getRequestDispatcher("cliente.jsp").forward(request, response);
                 } else {
                     session.setAttribute("venditore", u);
+                    session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);
                 }
             }

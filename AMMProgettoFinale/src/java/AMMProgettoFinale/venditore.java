@@ -60,16 +60,32 @@ public class venditore extends HttpServlet {
             request.getRequestDispatcher("riepilogoOperazione.jsp").forward(request, response);
         }
 
-        if (request.getParameter("prodottoDaModificare") != null) {
-            Integer prodottoDaModificare = Integer.parseInt(request.getParameter("prodottoDaModificare"));
+        if (request.getParameter("idProdottoDaModificare") != null) {
+            Integer idProdottoDaModificare = Integer.parseInt(request.getParameter("idProdottoDaModificare"));
+            request.setAttribute("idProdottoDaModificare", idProdottoDaModificare);
+            request.getRequestDispatcher("modificaProdotto.jsp").forward(request, response);
         }
         
         if (request.getParameter("prodottoModificato") != null) {
-            Integer prodottoModificato = Integer.parseInt(request.getParameter("prodottoModificato"));
+            String name = request.getParameter("name");
+            String urlImmagine = request.getParameter("urlImmagine");
+            String descrizione = request.getParameter("descrizione");
+            Double prezzo = Double.parseDouble(request.getParameter("prezzo"));
+            Integer disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
+            Integer idProdottoModificato = Integer.parseInt(request.getParameter("idProdottoDaModificare"));
+            
+            Factory.getInstance().modificaProdotto(idProdottoModificato, name, urlImmagine, descrizione, prezzo, disponibilita);
+            
             request.setAttribute("operazione", "Ecco il prodotto modificato");
+            
+            session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
+            request.getRequestDispatcher("controller.jsp").forward(request, response);
         }
 
         if (request.getParameter("prodottoDaEliminare") != null) {
+            Factory.getInstance().eliminaProdotto(Integer.parseInt(request.getParameter("prodottoDaEliminare")));
+            session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
+            request.getRequestDispatcher("controller.jsp").forward(request, response);
         }
     }
 

@@ -45,9 +45,9 @@
                     <li> <img title="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" alt="${prodotto.getNome()}"> </li>
                     <li>${prodotto.getDisponibilita()}</li>
                     <li>${prodotto.getPrezzo()}</li>
-                    <li><button name="Submit" type="submit" value="conferma"><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></button></li>
+                    <li><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></li>
+                    <p>${risultatoAcquisto}</p>
                 </ul>
-                <p>${risultatoAcquisto}</p>
             </div>
         </div>
 

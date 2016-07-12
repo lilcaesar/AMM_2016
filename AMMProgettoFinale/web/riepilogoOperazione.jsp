@@ -39,8 +39,8 @@
             <jsp:include page="sidebarDestra.jsp"/>
 
             <div id="content">
-                <h1>Conferma inserimento prodotto</h1>
-                <h3>Ecco il prodotto che hai inserito</h3>
+                <h1>Conferma operazione prodotto</h1>
+                <h3>${operazione}</h3>
                 <ul>
                     <li>${prodotto.getNome()}</li>
                     <li><image src="${prodotto.getURLImmagine()}"  alt="Immagine di ${prodotto.getNome()}"></li>

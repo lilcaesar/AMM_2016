@@ -82,8 +82,8 @@ public class venditore extends HttpServlet {
             request.getRequestDispatcher("controller.jsp").forward(request, response);
         }
 
-        if (request.getParameter("prodottoDaEliminare") != null) {
-            Factory.getInstance().eliminaProdotto(Integer.parseInt(request.getParameter("prodottoDaEliminare")));
+        if (request.getParameter("idProdottoDaEliminare") != null) {
+            Factory.getInstance().eliminaProdotto(Integer.parseInt(request.getParameter("idProdottoDaEliminare")));
             session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
             request.getRequestDispatcher("controller.jsp").forward(request, response);
         }

@@ -35,35 +35,41 @@ public class venditore extends HttpServlet {
 
         // Sessione
         HttpSession session = request.getSession(false);
-        
-        if(request.getParameter("submit") != null) {
+
+        if (request.getParameter("submit") != null) {
             String name = request.getParameter("name");
             String urlImmagine = request.getParameter("urlImmagine");
             String descrizione = request.getParameter("descrizione");
             Double prezzo = Double.parseDouble(request.getParameter("prezzo"));
             Integer disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
-            
-            Integer idVenditore = (Integer)(session.getAttribute("id"));
-            
+
+            Integer idVenditore = (Integer) (session.getAttribute("id"));
+
             Prodotto p = new Prodotto();
             p.setDescrizione(descrizione);
             p.setDisponibilita(disponibilita);
             p.setNome(name);
             p.setPrezzo(prezzo);
             p.setURLImmagine(urlImmagine);
-            
+
             Factory.getInstance().aggiungiProdotto(name, prezzo, disponibilita, urlImmagine, descrizione, idVenditore);
-            
+
             request.setAttribute("prodotto", p);
             request.setAttribute("operazione", "Ecco il prodotto che hai inserito");
-            session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer)session.getAttribute("id")).getProdottiVenditore());
+            session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
             request.getRequestDispatcher("riepilogoOperazione.jsp").forward(request, response);
         }
-        
-        if(request.getParameter("prodottoDaModificare") != null) {
+
+        if (request.getParameter("prodottoDaModificare") != null) {
+            Integer prodottoDaModificare = Integer.parseInt(request.getParameter("prodottoDaModificare"));
         }
         
-        if(request.getParameter("prodottoDaEliminare") != null) {
+        if (request.getParameter("prodottoModificato") != null) {
+            Integer prodottoModificato = Integer.parseInt(request.getParameter("prodottoModificato"));
+            request.setAttribute("operazione", "Ecco il prodotto modificato");
+        }
+
+        if (request.getParameter("prodottoDaEliminare") != null) {
         }
     }
 

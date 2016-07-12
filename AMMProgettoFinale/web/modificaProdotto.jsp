@@ -1,6 +1,6 @@
 <%-- 
-    Document   : venditore
-    Created on : 9-lug-2016, 11.52.40
+    Document   : modificaProdotto
+    Created on : 12-lug-2016, 15.40.08
     Author     : root
 --%>
 
@@ -33,7 +33,7 @@
                             <a href="./login.jsp"> Login </a>
                         </li>
                         <li>
-                            <a href="./cliente.jsp"> Sezione cliente </a>
+                            <a href="./venditore.jsp"> Sezione venditore </a>
                         </li>
                     </ul>
                 </nav>
@@ -44,11 +44,10 @@
             <div id="content">
                 <c:choose>
                     <c:when test="${loggedIn == true && venditore.getId()==id}">
-                        <h1>Inserimento nuovo prodotto</h1>
-                        <!--Form per l'inserimento di un nuovo oggeto-->
+                        <h1>Modifica prodotto</h1>
                         <form method="post" action="venditore.html">
-                            <div id="nuovoOggettoForm" class="form">
-                                <label for="name">Nome prodottoo</label>
+                            <div id="modificaOggettoForm" class="form">
+                                <label for="name">Nome oggetto</label>
                                 <input type="text" name="name"
                                        id="name" value="Nome oggetto" />
                                 <label for="urlImmagine">URL</label>
@@ -61,8 +60,8 @@
                                 <label for="disponibilita">Disponibilità</label>
                                 <input type="number" name="disponibilita" id="disponibilita"/>
                             </div>
-                            <div id="nuovoOggettoSubmit">
-                                <input type="submit" name="submit" value="Invia"/>
+                            <div id="modificaOggettoSubmit">
+                                <input type="submit" name="prodottoModificato" value="Modifica"/>
                                 <input type="reset" value="Reimposta"/>
                             </div>
                             <a href="controller.jsp">Vai al tuo account!</a>

@@ -30,6 +30,9 @@
                             <a href="./descrizione.jsp"> Descrizione sito </a>
                         </li>
                         <li>
+                            <a href="./venditore.jsp"> Sezione venditore </a>
+                        </li>
+                        <li>
                             <a href="./login.jsp"> Login </a>
                         </li>
                     </ul>

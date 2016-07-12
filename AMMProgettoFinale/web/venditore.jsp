@@ -65,7 +65,7 @@
                                 <input type="submit" name="submit" value="Invia"/>
                                 <input type="reset" value="Reimposta"/>
                             </div>
-                            <a href="controlle.jsp">Vai al tuo account!</a>
+                            <a href="controller.jsp">Vai al tuo account!</a>
                         </form>
                     </c:when>
                     <c:otherwise>

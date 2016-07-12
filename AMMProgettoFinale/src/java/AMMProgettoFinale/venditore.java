@@ -58,6 +58,12 @@ public class venditore extends HttpServlet {
             session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer)session.getAttribute("id")).getProdottiVenditore());
             request.getRequestDispatcher("inserimentoProdotto.jsp").forward(request, response);
         }
+        
+        if(request.getParameter("prodottoDaModificare") != null) {
+        }
+        
+        if(request.getParameter("prodottoDaEliminare") != null) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

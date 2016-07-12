@@ -44,23 +44,25 @@
             <div id="content">
                 <!--Tabella dei prodotti-->
                 <c:choose>
-                    <c:when test="${loggedIn == true && cliente.getId()==id}">
+                    <c:when test="${loggedIn == true && venditore.getId()==id}">
                         <table>
                             <tr>
                                 <th>Oggetto</th>
                                 <th>Immagine</th>
                                 <th>Disponibilità</th>
                                 <th>Prezzo</th>
-                                <th>Carrello</th>
+                                <th>Modifica</th>
+                                <th>Elimina</th>
                             </tr>
                             
-                            <c:forEach var="prodotto" items="${listaProdotti}">
+                            <c:forEach var="prodotto" items="${venditore.getProdottiVenditore()}">
                                 <tr>
                                     <td>${prodotto.getNome()}</td>
                                     <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" width="240" height="240"> </td>
                                     <td>${prodotto.getDisponibilita()}</td>
                                     <td>${prodotto.getPrezzo()}</td>
-                                    <td> <a href="cliente.html?idProdotto=${prodotto.getId()}">Aggiungi al carrello</a> </td>
+                                    <td> <a href="venditore.html?idProdottoDaModificare=${prodotto.getId()}">Modifica</a> </td>
+                                    <td> <a href="venditore.html?idProdottoDaEliminare=${prodotto.getId()}">Elimina</a> </td>
                                 </tr>
                             </c:forEach>
                         </table>

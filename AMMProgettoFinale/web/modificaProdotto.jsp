@@ -48,18 +48,18 @@
                         <form method="post" action="venditore.html">
                             <div id="modificaOggettoForm" class="form">
                                 <label for="name">Nome oggetto</label>
-                                <input type="text" name="name" id="name"/>
+                                <input type="text" name="name" id="name" value="${prodottoDaModificare.getNome()}"/>
                                 <label for="urlImmagine">URL</label>
-                                <input type="url" name="urlImmagine" id="urlImmagine"/>
+                                <input type="url" name="urlImmagine" id="urlImmagine" value="${prodottoDaModificare.getURLImmagine()}"/>
                                 <label for="descrizione">Descrizione</label>
-                                <textarea rows="4" cols="20" name="descrizione" id="descrizione">Descrizione</textarea>
+                                <textarea rows="4" cols="20" name="descrizione" id="descrizione">"${prodottoDaModificare.getDescrizione()}"</textarea>
                                 <label for="prezzo">Prezzo</label>
-                                <input type="number" name="prezzo" id="prezzo"/>
+                                <input type="number" name="prezzo" id="prezzo" value="${prodottoDaModificare.getPrezzo()}"/>
                                 <label for="disponibilita">Disponibilità</label>
-                                <input type="number" name="disponibilita" id="disponibilita"/>
+                                <input type="number" name="disponibilita" id="disponibilita" value="${prodottoDaModificare.getDisponibilita()}"/>
                             </div>
                             <div id="modificaOggettoSubmit">
-                                <input type="hidden" name='idProdottoDaModificare' id='idProdottoDaModificare' value='${idProdottoDaModificare}'/>
+                                <input type="hidden" name="idProdottoDaModificare" id="idProdottoDaModificare" value="${idProdottoDaModificare}"/>
                                 <input type="submit" name="prodottoModificato" value="Modifica"/>
                                 <input type="reset" value="Reimposta"/>
                             </div>

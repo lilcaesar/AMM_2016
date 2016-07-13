@@ -66,6 +66,7 @@ public class venditore extends HttpServlet {
         if (request.getParameter("idProdottoDaModificare") != null) {
             Integer idProdottoDaModificare = Integer.parseInt(request.getParameter("idProdottoDaModificare"));
             request.setAttribute("idProdottoDaModificare", idProdottoDaModificare);
+            request.setAttribute("prodottoDaModificare",Factory.getInstance().getProdotto(idProdottoDaModificare));
             request.getRequestDispatcher("modificaProdotto.jsp").forward(request, response);
         }
 

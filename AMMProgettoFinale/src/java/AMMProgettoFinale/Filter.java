@@ -32,24 +32,19 @@ public class Filter extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String command = request.getParameter("cmd");
-        if (command != null) 
-        {
-            if (command.equals("search")) 
-            {
-                ArrayList<Studente> listaAlunni = UtentiFactory.getInstance()
-                        .getStudenti(request.getParameter("text"));
-                // Imposto la lista come attributo della request, come facevamo per l'HTML
-                request.setAttribute("listaAlunni", listaAlunni);
-                
-                // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
-                response.setContentType("application/json");
-                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
-                response.setHeader("Cache-Control", "no-store, no-cache, "
-                        + "must-revalidate");
-                // Genero il json con una jsp
-                request.getRequestDispatcher("listaAlunniJson.jsp").
-                        forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String command = request.getParameter("cmd");
+            if (command != null){
+                if (command.equals("search")) {                    
+                    ArrayList<Prodotto> listaProdotti = Factory.getInstance().getProdotti(request.getParameter("text"));
+                    
+                    request.setAttribute("listaProdotti", listaProdotti);
+                    response.setContentType("application/json");
+                    response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                    response.setHeader("Cache-Control", "no-store, no-cache, "+ "must-revalidate");
+                    request.getRequestDispatcher("listaOggetti.jsp").forward(request, response);
+                }
             }
         }
     }

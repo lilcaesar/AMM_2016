@@ -294,6 +294,42 @@ public class Factory {
         }
         return prodotti;
     }
+    
+    public ArrayList<Prodotto> getProdotti(String s)
+    {
+        ArrayList<Prodotto> array = new ArrayList<Prodotto>();
+        try 
+        {
+            Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
+            String query = "select * from " + "prodotto where nome LIKE ? OR descrizione LIKE ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            s = "%"+s+"%";
+            stmt.setString(1, s);
+            stmt.setString(2, s);
+            ResultSet set = stmt.executeQuery();
+            
+            while(set.next()) 
+            {
+                Prodotto o = new Prodotto();
+                    o.setId(set.getInt("id"));//nomi delle colonne database
+                    o.setNome(set.getString("nome"));
+                    o.setURLImmagine(set.getString("URLImmagine"));
+                    o.setDescrizione(set.getString("descrizione"));
+                    o.setPrezzo(set.getDouble("prezzo"));
+                    o.setDisponibilita(set.getInt("disponibilita"));
+                array.add(o);
+            }
+            
+            stmt.close();
+            conn.close();
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return array;
+    }
 
     public Integer getIdVenditore(Integer idProdotto) {
         Integer idVenditore = 0;

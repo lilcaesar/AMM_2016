@@ -20,17 +20,17 @@ $(document).ready(function ()
                     },
                     dataType: 'json',
                     success: function (data, state) {
-                        aggiornaListaProdotti(data);
+                        caricaListaProdotti(data);
                     },
                     error: function (data, state) {
                     }
                 });
 
 
-        function aggiornaListaProdotti(listaProdotti)
+        function caricaListaProdotti(listaProdotti)
         {
-            $("#listaProdotti").empty();
             if (listaOggetti.length !== 0) {
+                $("#listaProdotti").empty();
                 for (var prodotto in listaProdotti)
                 {
                     var tr = document.createElement("tr");
@@ -81,6 +81,7 @@ $(document).ready(function ()
                     document.getElementById("tabella").appendChild(tr);
                 }
             } else {
+                $("#listaProdotti").empty();
                 var txt = document.getElementById("ErroreFiltro");
                 txt.innerHTML = 'Prodotto non presente';
             }

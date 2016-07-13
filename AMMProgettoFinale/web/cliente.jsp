@@ -16,6 +16,8 @@
         <meta name="description" content="Pagina del cliente">
         <meta name="keywords" content="eCommerce, drone, RC, FPV, FirstPersonView">
         <link href="./style.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="js/filter.js" type="text/javascript"></script>
+        <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="page">           
@@ -43,7 +45,7 @@
                 <c:choose>
                     <c:when test="${loggedIn == true && cliente.getId()==id}">
                         <label for="Filtra">Cerca Prodotto</label>
-                        <input type="text" name="Filtra" id="Filtra"/>
+                        <input type="text" id="Filtra"/>
                         <table id="tabella">
                             <tr>
                                 <th>Oggetto</th>

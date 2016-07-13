@@ -6,50 +6,46 @@
 
 $(document).ready(function ()
 {
-   $("#ricerca").keyup(function()
+   $("#Filtra").keyup(function()
     {  
         // Preleva il valore
-        var text = $("#ricerca").val();
+        var text = $("#Filtra").val();
        
         $.ajax(
         {
-            url: "RegistraAjax",
+            url: "Filter",
             data:{
               cmd: "search",
               text: text
             },
             dataType: 'json',
             success : function(data, state){
-                aggiornaListaAlunni(data);
+                aggiornaListaProdotti(data);
             },
             error : function(data, state){
             }
         });
         
        // Funzione che viene richiamata in caso di successo
-        function aggiornaListaAlunni(listaAlunni)
+        function aggiornaListaProdotti(listaProdotti)
         {
-            // Cancella la lista
-            $("#listaAlunni").empty();
-            // Per ogni alunno trovato dal database
-            for(var alunno in listaAlunni)
+            $("#listaProdotti").empty();
+            for(var prodotto in listaProdotti)
             {
-                // Crea un nuovo tag li
-                var newli = document.createElement("li");
-                newli.setAttribute("name", "alunno");
-                // testo
-                var text = document.createTextNode(listaAlunni[alunno].nome + 
-                        " " + listaAlunni[alunno].cognome + " ");
-                newli.appendChild(text);
+                // Crea un nuovo tag td
+                var newtd = document.createElement("td");
+                newtd.setAttribute("nome", "prodotto");
+                var text = document.createTextNode(listaProdotti[prodotto].nome);
+                newtd.appendChild(text);
                 // Crea link
                 var link = document.createElement("a");
                 link.setAttribute("href", "Registra?alunnoId="+listaAlunni[alunno].id);
                 var registraTxt = document.createTextNode("Registra esame");
                 link.appendChild(registraTxt);
-                newli.appendChild(link);
+                newtd.appendChild(link);
                 
                 // Aggiunge il tag li al tag ul
-                $("#listaAlunni").append(newli);
+                $("#listaProdotti").append(newtd);
             }
         }
     }); 

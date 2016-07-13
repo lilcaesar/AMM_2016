@@ -54,7 +54,7 @@
                             </tr>
 
                             <c:forEach var="prodotto" items="${listaProdotti}">
-                                <tr>
+                                <tr id="listaProdotti">
                                     <td>${prodotto.getNome()}</td>
                                     <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" width="120" height="120"> </td>
                                     <td>${prodotto.getDisponibilita()}</td>

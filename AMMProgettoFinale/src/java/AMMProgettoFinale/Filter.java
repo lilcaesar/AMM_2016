@@ -7,6 +7,7 @@ package AMMProgettoFinale;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,18 +32,25 @@ public class Filter extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Filter</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Filter at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String command = request.getParameter("cmd");
+        if (command != null) 
+        {
+            if (command.equals("search")) 
+            {
+                ArrayList<Studente> listaAlunni = UtentiFactory.getInstance()
+                        .getStudenti(request.getParameter("text"));
+                // Imposto la lista come attributo della request, come facevamo per l'HTML
+                request.setAttribute("listaAlunni", listaAlunni);
+                
+                // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
+                response.setContentType("application/json");
+                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                response.setHeader("Cache-Control", "no-store, no-cache, "
+                        + "must-revalidate");
+                // Genero il json con una jsp
+                request.getRequestDispatcher("listaAlunniJson.jsp").
+                        forward(request, response);
+            }
         }
     }
 

@@ -48,6 +48,7 @@
                             <tr>
                                 <th>Oggetto</th>
                                 <th>Immagine</th>
+                                <th>Descrizione</th>
                                 <th>Disponibilità</th>
                                 <th>Prezzo</th>
                                 <th>Carrello</th>
@@ -57,6 +58,7 @@
                                 <tr id="listaProdotti">
                                     <td>${prodotto.getNome()}</td>
                                     <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" width="120" height="120"> </td>
+                                    <td>${prodotto.getDescrizione()}</td>
                                     <td>${prodotto.getDisponibilita()}</td>
                                     <td>${prodotto.getPrezzo()}</td>
                                     <td> <a href="cliente.html?idProdotto=${prodotto.getId()}">Aggiungi al carrello</a> </td>

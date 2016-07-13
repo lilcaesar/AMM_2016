@@ -59,7 +59,7 @@
                                 <input type="number" name="disponibilita" id="disponibilita" value="${prodottoDaModificare.getDisponibilita()}"/>
                             </div>
                             <div id="modificaOggettoSubmit">
-                                <input type="hidden" name="idProdottoDaModificare" id="idProdottoDaModificare" value="${idProdottoDaModificare}"/>
+                                <input type="hidden" name="idProdottoModificato" id="idProdottoModificato" value="${idProdottoDaModificare}"/>
                                 <input type="submit" name="prodottoModificato" value="Modifica"/>
                                 <input type="reset" value="Reimposta"/>
                             </div>

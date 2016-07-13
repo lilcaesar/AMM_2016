@@ -72,11 +72,11 @@ public class venditore extends HttpServlet {
 
         if (request.getParameter("prodottoModificato") != null) {
 
-            String name = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getNome();
-            String urlImmagine = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getURLImmagine();
-            String descrizione = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getDescrizione();
-            Double prezzo = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getPrezzo();
-            Integer disponibilita = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getDisponibilita();
+            String name = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getNome();
+            String urlImmagine = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getURLImmagine();
+            String descrizione = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getDescrizione();
+            Double prezzo = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getPrezzo();
+            Integer disponibilita = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getDisponibilita();
             
             if(!(request.getParameter("name").isEmpty())){
                 name = request.getParameter("name");
@@ -94,7 +94,7 @@ public class venditore extends HttpServlet {
                 disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
             }
             
-            Integer idProdottoModificato = Integer.parseInt(request.getParameter("idProdottoDaModificare"));
+            Integer idProdottoModificato = Integer.parseInt(request.getParameter("idProdottoModificato"));
 
             Factory.getInstance().modificaProdotto(idProdottoModificato, name, urlImmagine, descrizione, prezzo, disponibilita);
 

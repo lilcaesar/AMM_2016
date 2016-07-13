@@ -26,62 +26,63 @@ $(document).ready(function ()
                     }
                 });
 
-        // Funzione che viene richiamata in caso di successo
+
         function aggiornaListaProdotti(listaProdotti)
         {
             $("#listaProdotti").empty();
-            for (var prodotto in listaProdotti)
-            {
-                var tr = document.createElement("tr");
+            if (listaOggetti.length !== 0) {
+                for (var prodotto in listaProdotti)
+                {
+                    var tr = document.createElement("tr");
 
-                // colonna per il nome
-                var td = document.createElement("td");
-                var txt = document.createTextNode(listaOggetti[oggetto].name);
-                td.appendChild(txt);
-                tr.appendChild(td);
-                
-                // colonna per l'immagine 
-                var td = document.createElement("td");
-                td.setAttribute("class", "urlImmagine");
-                var img = document.createElement("img");
-                img.setAttribute("title", listaProdotti[prodotto].name);//dai campi name del vettore json
-                img.setAttribute("src", listaProdotti[prodotto].urlImmagine);
-                img.setAttribute("alt", listaProdotti[prodotto].name);
-                img.setAttribute("width", 120);
-                img.setAttribute("height", 120);
-                td.appendChild(img);
-                tr.appendChild(td);
 
-                //colonna per la descrizione
-                var td = document.createElement("td");
-                var txt = document.createTextNode(listaProdotti[prodotto].descrizione);
-                td.appendChild(txt);
-                tr.appendChild(td);
-                
-                // colonna per la quantità
-                var td = document.createElement("td");
-                td.setAttribute("class", "disponibilita");
-                var txt = document.createTextNode(listaProdotti[prodotto].disponibilita);
-                td.appendChild(txt);
-                tr.appendChild(td);
+                    var td = document.createElement("td");
+                    var txt = document.createTextNode(listaProdotti[prodotto].name);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
 
-                // colonna per il prezzo
-                var td = document.createElement("td");
-                td.setAttribute("class", "prezzo");
-                var txt = document.createTextNode(listaProdotti[prodotto].prezzo);
-                td.appendChild(txt);
-                tr.appendChild(td);                
 
-                // colonna per il link all'acquisto
-                var td = document.createElement("td");
-                td.setAttribute("class", "link");
-                var a = document.createElement("a");
-                a.setAttribute("href", "cliente.html?idOggetto=" + listaOggetti[oggetto].id);
-                a.innerHTML = 'Aggiungi al carrello';
-                td.appendChild(a);
-                tr.appendChild(td);
-                // inserisce la riga appena creata nella tabella
-                document.getElementById("table").appendChild(tr);
+                    var td = document.createElement("td");
+                    var img = document.createElement("img");
+                    img.setAttribute("title", listaProdotti[prodotto].nome);
+                    img.setAttribute("src", listaProdotti[prodotto].urlImmagine);
+                    img.setAttribute("alt", listaProdotti[prodotto].name);
+                    img.setAttribute("width", 120);
+                    img.setAttribute("height", 120);
+                    td.appendChild(img);
+                    tr.appendChild(td);
+
+
+                    var td = document.createElement("td");
+                    var txt = document.createTextNode(listaProdotti[prodotto].descrizione);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+
+
+                    var td = document.createElement("td");
+                    var txt = document.createTextNode(listaProdotti[prodotto].disponibilita);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+
+
+                    var td = document.createElement("td");
+                    var txt = document.createTextNode(listaProdotti[prodotto].prezzo);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+
+
+                    var td = document.createElement("td");
+                    var a = document.createElement("a");
+                    a.setAttribute("href", "cliente.html?idProdotto=" + listaProdotti[prodotto].id);
+                    a.innerHTML = 'Aggiungi al carrello';
+                    td.appendChild(a);
+                    tr.appendChild(td);
+
+                    document.getElementById("tabella").appendChild(tr);
+                }
+            } else {
+                var txt = document.getElementById("ErroreFiltro");
+                txt.innerHTML = 'Prodotto non presente';
             }
         }
     });

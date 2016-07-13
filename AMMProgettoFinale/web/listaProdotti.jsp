@@ -10,6 +10,7 @@
 <json:array>
     <c:forEach var="prodotto" items="${listaProdotti}">
         <json:object>
+            <json:property name="id" value="${prodotto.getId()}"/>
             <json:property name="nome" value="${prodotto.getNome()}"/>
             <json:property name="urlImmagine" value="${prodotto.getURLImmagine()}"/>
             <json:property name="descrizione" value="${prodotto.getDescrizione()}"/>

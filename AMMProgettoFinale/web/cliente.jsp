@@ -44,7 +44,7 @@
                     <c:when test="${loggedIn == true && cliente.getId()==id}">
                         <label for="Filtra">Cerca Prodotto</label>
                         <input type="text" name="Filtra" id="Filtra"/>
-                        <table>
+                        <table id="tabella">
                             <tr>
                                 <th>Oggetto</th>
                                 <th>Immagine</th>
@@ -65,6 +65,7 @@
                                 </tr>
                             </c:forEach>
                         </table>
+                        <p id="ErroreFiltro"></p>
                     </c:when>
                     <c:otherwise>
                         <jsp:include page="erroreLogin.jsp"/>

@@ -69,6 +69,7 @@ public class login extends HttpServlet {
                     request.getRequestDispatcher("cliente.jsp").forward(request, response);
                 } else {
                     session.setAttribute("venditore", u);
+                    session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore(u.getId()).getProdottiVenditore()); //Non uso u.getProdottiVenditore poichè u risulta ancora un oggetto di tipo Utente
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);
                 }
             }

@@ -55,7 +55,7 @@
                                 <th>Elimina</th>
                             </tr>
                             
-                            <c:forEach var="prodotto" items="${venditore.getProdottiVenditore()}">
+                            <c:forEach var="prodotto" items="${listaProdottiVenditore}">
                                 <tr>
                                     <td>${prodotto.getNome()}</td>
                                     <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" width="240" height="240"> </td>

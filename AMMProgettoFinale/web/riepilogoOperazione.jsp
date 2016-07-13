@@ -46,7 +46,7 @@
                 <h3>${operazione}</h3>
                 <ul>
                     <li>${prodotto.getNome()}</li>
-                    <li><image src="${prodotto.getURLImmagine()}"  alt="Immagine di ${prodotto.getNome()}"></li>
+                    <li><image src="${prodotto.getURLImmagine()}"  alt="Immagine di ${prodotto.getNome()}" width="120" height="120"></li>
                     <li>${prodotto.getDescrizione()}</li>
                     <li> ${prodotto.getDisponibilita()}</li>
                     <li>${prodotto.getPrezzo()}</li>

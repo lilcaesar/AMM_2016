@@ -42,6 +42,8 @@
                 <!--Tabella dei prodotti-->
                 <c:choose>
                     <c:when test="${loggedIn == true && cliente.getId()==id}">
+                        <label for="filtro">Cerca Prodotto</label>
+                        <input type="text" name="filtro" id="filtro"/>
                         <table>
                             <tr>
                                 <th>Oggetto</th>
@@ -50,11 +52,11 @@
                                 <th>Prezzo</th>
                                 <th>Carrello</th>
                             </tr>
-                            
+
                             <c:forEach var="prodotto" items="${listaProdotti}">
                                 <tr>
                                     <td>${prodotto.getNome()}</td>
-                                    <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" width="240" height="240"> </td>
+                                    <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" width="120" height="120"> </td>
                                     <td>${prodotto.getDisponibilita()}</td>
                                     <td>${prodotto.getPrezzo()}</td>
                                     <td> <a href="cliente.html?idProdotto=${prodotto.getId()}">Aggiungi al carrello</a> </td>

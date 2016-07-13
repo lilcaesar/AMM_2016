@@ -322,15 +322,14 @@ public class Factory {
             Connection c = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
 
             String query = "INSERT INTO prodotto (id, nome, prezzo, disponibilita, descrizione, URLImmagine, idVenditore)"
-                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    + " VALUES (default, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = c.prepareStatement(query);
-            stmt.setInt(1, getProdotti().size());
-            stmt.setString(2, nome);
-            stmt.setDouble(3, prezzo);
-            stmt.setInt(4, disponibilita);
-            stmt.setString(5, descrizione);
-            stmt.setString(6, URLImmagine);
-            stmt.setInt(7, idVenditore);
+            stmt.setString(1, nome);
+            stmt.setDouble(2, prezzo);
+            stmt.setInt(3, disponibilita);
+            stmt.setString(4, descrizione);
+            stmt.setString(5, URLImmagine);
+            stmt.setInt(6, idVenditore);
 
             stmt.executeUpdate();
             stmt.close();

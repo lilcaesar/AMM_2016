@@ -49,11 +49,9 @@
                         <form method="post" action="venditore.html">
                             <div id="nuovoOggettoForm" class="form">
                                 <label for="name">Nome prodottoo</label>
-                                <input type="text" name="name"
-                                       id="name" value="Nome oggetto" />
+                                <input type="text" name="name" id="name"/>
                                 <label for="urlImmagine">URL</label>
-                                <input type="url" name="urlImmagine"
-                                       id="urlImmagine" value="http://example.org/hello"/>
+                                <input type="url" name="urlImmagine" id="urlImmagine"/>
                                 <label for="descrizione">Descrizione</label>
                                 <textarea rows="4" cols="20" name="descrizione" id="descrizione">Descrizione</textarea>
                                 <label for="prezzo">Prezzo</label>

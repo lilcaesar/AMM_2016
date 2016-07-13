@@ -37,6 +37,9 @@ public class venditore extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (request.getParameter("submit") != null) {
+            if ((request.getParameter("name").isEmpty()) || (request.getParameter("urlImmagine").isEmpty()) || (request.getParameter("descrizione").isEmpty()) || (request.getParameter("prezzo").isEmpty()) || (request.getParameter("disponibilita").isEmpty())) {
+                request.getRequestDispatcher("venditore.jsp").forward(request, response);
+            }
             String name = request.getParameter("name");
             String urlImmagine = request.getParameter("urlImmagine");
             String descrizione = request.getParameter("descrizione");
@@ -65,19 +68,37 @@ public class venditore extends HttpServlet {
             request.setAttribute("idProdottoDaModificare", idProdottoDaModificare);
             request.getRequestDispatcher("modificaProdotto.jsp").forward(request, response);
         }
-        
+
         if (request.getParameter("prodottoModificato") != null) {
-            String name = request.getParameter("name");
-            String urlImmagine = request.getParameter("urlImmagine");
-            String descrizione = request.getParameter("descrizione");
-            Double prezzo = Double.parseDouble(request.getParameter("prezzo"));
-            Integer disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
+
+            String name = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getNome();
+            String urlImmagine = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getURLImmagine();
+            String descrizione = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getDescrizione();
+            Double prezzo = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getPrezzo();
+            Integer disponibilita = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoDaModificare"))).getDisponibilita();
+            
+            if(!(request.getParameter("name").isEmpty())){
+                name = request.getParameter("name");
+            }            
+            if(!(request.getParameter("urlImmagine").isEmpty())){
+                urlImmagine = request.getParameter("urlImmagine");
+            }
+            if(!(request.getParameter("descrizione").isEmpty())){
+                descrizione = request.getParameter("descrizione");
+            }
+            if(!(request.getParameter("prezzo").isEmpty())){
+                prezzo = Double.parseDouble(request.getParameter("prezzo"));
+            }
+            if(!(request.getParameter("disponibilita").isEmpty())){
+                disponibilita = Integer.parseInt(request.getParameter("disponibilita"));
+            }
+            
             Integer idProdottoModificato = Integer.parseInt(request.getParameter("idProdottoDaModificare"));
-            
+
             Factory.getInstance().modificaProdotto(idProdottoModificato, name, urlImmagine, descrizione, prezzo, disponibilita);
-            
+
             request.setAttribute("operazione", "Ecco il prodotto modificato");
-            
+
             session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
             request.getRequestDispatcher("controller.jsp").forward(request, response);
         }

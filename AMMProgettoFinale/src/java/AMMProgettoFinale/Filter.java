@@ -43,7 +43,7 @@ public class Filter extends HttpServlet {
                     response.setContentType("application/json");
                     response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
                     response.setHeader("Cache-Control", "no-store, no-cache, "+ "must-revalidate");
-                    request.getRequestDispatcher("listaOggetti.jsp").forward(request, response);
+                    request.getRequestDispatcher("listaProdotti.jsp").forward(request, response);
                 }
             }
         }

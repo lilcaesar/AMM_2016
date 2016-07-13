@@ -42,8 +42,8 @@
                 <!--Tabella dei prodotti-->
                 <c:choose>
                     <c:when test="${loggedIn == true && cliente.getId()==id}">
-                        <label for="filtro">Cerca Prodotto</label>
-                        <input type="text" name="filtro" id="filtro"/>
+                        <label for="Filtra">Cerca Prodotto</label>
+                        <input type="text" name="Filtra" id="Filtra"/>
                         <table>
                             <tr>
                                 <th>Oggetto</th>

@@ -13,7 +13,7 @@ $(document).ready(function ()
 
         $.ajax(
                 {
-                    url: "Filter",
+                    url: "filter.json",
                     data: {
                         cmd: "search",
                         text: text

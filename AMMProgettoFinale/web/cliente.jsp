@@ -16,8 +16,8 @@
         <meta name="description" content="Pagina del cliente">
         <meta name="keywords" content="eCommerce, drone, RC, FPV, FirstPersonView">
         <link href="./style.css" rel="stylesheet" type="text/css" media="screen" />
-        <script src="js/filter.js" type="text/javascript"></script>
         <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+        <script src="js/filter.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="page">           

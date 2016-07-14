@@ -29,7 +29,7 @@ $(document).ready(function ()
 
         function caricaListaProdotti(listaProdotti)
         {
-            if (listaProdott.length !== 0) {
+            if (listaProdotti.length !== 0) {
                 $("#listaProdotti").empty();
                 for (var prodotto in listaProdotti)
                 {

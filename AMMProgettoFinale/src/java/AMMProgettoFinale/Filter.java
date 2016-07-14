@@ -33,18 +33,16 @@ public class Filter extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String command = request.getParameter("cmd");
-            if (command != null){
-                if (command.equals("search")) {                    
-                    ArrayList<Prodotto> listaProdotti = Factory.getInstance().getProdotti(request.getParameter("text"));
-                    
-                    request.setAttribute("listaProdotti", listaProdotti);
-                    response.setContentType("application/json");
-                    response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
-                    response.setHeader("Cache-Control", "no-store, no-cache, "+ "must-revalidate");
-                    request.getRequestDispatcher("listaProdotti.jsp").forward(request, response);
-                }
+        String command = request.getParameter("cmd");
+        if (command != null) {
+            if (command.equals("search")) {
+                ArrayList<Prodotto> listaProdotti = Factory.getInstance().getProdotti(request.getParameter("text"));
+
+                request.setAttribute("listaProdotti", listaProdotti);
+                response.setContentType("application/json");
+                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
+                request.getRequestDispatcher("listaProdotti.jsp").forward(request, response);
             }
         }
     }

@@ -15,7 +15,7 @@
             <json:property name="urlImmagine" value="${prodotto.getURLImmagine()}"/>
             <json:property name="descrizione" value="${prodotto.getDescrizione()}"/>
             <json:property name="prezzo" value="${prodotto.getPrezzo()}"/>
-            <json:property name="disponibilita" value="${prodotto.getDIsponibilita()}"/>
+            <json:property name="disponibilita" value="${prodotto.getDisponibilita()}"/>
         </json:object>
     </c:forEach>
 </json:array>

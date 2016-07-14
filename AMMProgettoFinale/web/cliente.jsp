@@ -58,7 +58,7 @@
                             </tr>
 
                             <c:forEach var="prodotto" items="${listaProdotti}">
-                                <tr id="listaProdotti">
+                                <tr class="listaProdotti">
                                     <td>${prodotto.getNome()}</td>
                                     <td> <img title="${prodotto.getNome()}" alt="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" width="120" height="120"> </td>
                                     <td>${prodotto.getDescrizione()}</td>

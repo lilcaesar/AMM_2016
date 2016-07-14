@@ -32,12 +32,12 @@ $(document).ready(function ()
             if (listaProdotti.length !== 0) {
                 var debug = document.getElementById("debug");
                 debug.innerHTML = listaProdotti.length;
-                $("#listaProdotti").empty();
+                $(".listaProdotti").empty();
                 $("#ErroreFiltro").empty();
                 for (var prodotto in listaProdotti)
                 {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id", "listaProdotti");
+                    tr.setAttribute("class", "listaProdotti");
 
                     var td = document.createElement("td");
                     var txt = document.createTextNode(listaProdotti[prodotto].nome);
@@ -84,7 +84,7 @@ $(document).ready(function ()
                     document.getElementById("tabella").appendChild(tr);
                 }
             } else {
-                $("#listaProdotti").empty();
+                $(".listaProdotti").empty();
                 var txt = document.getElementById("ErroreFiltro");
                 txt.innerHTML = 'Prodotto non presente';
             }

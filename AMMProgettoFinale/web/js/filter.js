@@ -30,15 +30,17 @@ $(document).ready(function ()
         function caricaListaProdotti(listaProdotti)
         {
             if (listaProdotti.length !== 0) {
+                var debug = document.getElementById("debug");
+                debug.innerHTML = listaProdotti.length;
                 $("#listaProdotti").empty();
                 $("#ErroreFiltro").empty();
                 for (var prodotto in listaProdotti)
                 {
                     var tr = document.createElement("tr");
-
+                    tr.setAttribute("id", "listaProdotti");
 
                     var td = document.createElement("td");
-                    var txt = document.createTextNode(listaProdotti[prodotto].name);
+                    var txt = document.createTextNode(listaProdotti[prodotto].nome);
                     td.appendChild(txt);
                     tr.appendChild(td);
 
@@ -47,7 +49,7 @@ $(document).ready(function ()
                     var img = document.createElement("img");
                     img.setAttribute("title", listaProdotti[prodotto].nome);
                     img.setAttribute("src", listaProdotti[prodotto].urlImmagine);
-                    img.setAttribute("alt", listaProdotti[prodotto].name);
+                    img.setAttribute("alt", listaProdotti[prodotto].nome);
                     img.setAttribute("width", 120);
                     img.setAttribute("height", 120);
                     td.appendChild(img);

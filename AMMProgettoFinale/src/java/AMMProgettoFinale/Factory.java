@@ -312,7 +312,7 @@ public class Factory {
             while(set.next()) 
             {
                 Prodotto o = new Prodotto();
-                    o.setId(set.getInt("id"));//nomi delle colonne database
+                    o.setId(set.getInt("id"));
                     o.setNome(set.getString("nome"));
                     o.setURLImmagine(set.getString("URLImmagine"));
                     o.setDescrizione(set.getString("descrizione"));

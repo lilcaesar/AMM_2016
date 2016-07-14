@@ -31,6 +31,7 @@ $(document).ready(function ()
         {
             if (listaProdotti.length !== 0) {
                 $("#listaProdotti").empty();
+                $("#ErroreFiltro").empty();
                 for (var prodotto in listaProdotti)
                 {
                     var tr = document.createElement("tr");

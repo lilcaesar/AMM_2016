@@ -29,20 +29,21 @@ $(document).ready(function ()
 
         function caricaListaProdotti(listaProdotti)
         {
-            if (listaProdotti.length !== 0) {
-                $(".listaProdotti").empty();
+            if (listaProdotti.length !== 0) {   //Se trovo prodotti nella lista
+                $(".listaProdotti").empty();    //Svuoto la tabella e la scritta di errore
                 $("#ErroreFiltro").empty();
-                for (var prodotto in listaProdotti)
+                for (var prodotto in listaProdotti) //Per ogni prodotto che trovo creo...
                 {
                     var tr = document.createElement("tr");
                     tr.setAttribute("class", "listaProdotti");
 
+                    //...la colonna del nome..
                     var td = document.createElement("td");
                     var txt = document.createTextNode(listaProdotti[prodotto].nome);
                     td.appendChild(txt);
                     tr.appendChild(td);
 
-
+                    //..dell'immagine...
                     var td = document.createElement("td");
                     var img = document.createElement("img");
                     img.setAttribute("title", listaProdotti[prodotto].nome);
@@ -53,25 +54,25 @@ $(document).ready(function ()
                     td.appendChild(img);
                     tr.appendChild(td);
 
-
+                    //..della descrizione...
                     var td = document.createElement("td");
                     var txt = document.createTextNode(listaProdotti[prodotto].descrizione);
                     td.appendChild(txt);
                     tr.appendChild(td);
 
-
+                    //...della disponibilità...
                     var td = document.createElement("td");
                     var txt = document.createTextNode(listaProdotti[prodotto].disponibilita);
                     td.appendChild(txt);
                     tr.appendChild(td);
 
-
+                    //...del prezzo...
                     var td = document.createElement("td");
                     var txt = document.createTextNode(listaProdotti[prodotto].prezzo);
                     td.appendChild(txt);
                     tr.appendChild(td);
 
-
+                    //...e il link per l'acquisto
                     var td = document.createElement("td");
                     var a = document.createElement("a");
                     a.setAttribute("href", "cliente.html?idProdotto=" + listaProdotti[prodotto].id);
@@ -81,7 +82,7 @@ $(document).ready(function ()
 
                     document.getElementById("tabella").appendChild(tr);
                 }
-            } else {
+            } else {//Altrimenti segnalo la mancanza di prodotti
                 $(".listaProdotti").empty();
                 var txt = document.getElementById("ErroreFiltro");
                 txt.innerHTML = 'Prodotto non presente';

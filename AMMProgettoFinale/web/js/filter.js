@@ -30,8 +30,6 @@ $(document).ready(function ()
         function caricaListaProdotti(listaProdotti)
         {
             if (listaProdotti.length !== 0) {
-                var debug = document.getElementById("debug");
-                debug.innerHTML = listaProdotti.length;
                 $(".listaProdotti").empty();
                 $("#ErroreFiltro").empty();
                 for (var prodotto in listaProdotti)

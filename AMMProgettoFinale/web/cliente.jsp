@@ -46,7 +46,6 @@
                     <c:when test="${loggedIn == true && cliente.getId()==id}">
                         <label for="Filtra">Cerca Prodotto</label>
                         <input type="text" id="Filtra"/>
-                        <p id="debug"></p>
                         <table id="tabella">
                             <tr>
                                 <th>Oggetto</th>

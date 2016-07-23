@@ -59,15 +59,20 @@ public class login extends HttpServlet {
             String password = request.getParameter("password");
 
             Utente u = Factory.getInstance().getUtente(username, password);
+            //Se l'utente esiste
             if (u != null) {
+                //Setto i parametri di sessione
                 session.setAttribute("loggedIn", true);
                 session.setAttribute("id", u.getId());
 
+                //Se l'utente è un cliente
                 if (u instanceof Cliente) {
+                    //richiamo la pagina del cliente passandogli come parametro la lista dei prodotti
                     session.setAttribute("cliente", u);
                     request.setAttribute("listaProdotti", Factory.getInstance().getProdotti());
                     request.getRequestDispatcher("cliente.jsp").forward(request, response);
                 } else {
+                    //Altrimenti carico la pagina del venditore e passo come parametro i prodotti del venditore loggato
                     session.setAttribute("venditore", u);
                     session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore(u.getId()).getProdottiVenditore()); //Non uso u.getProdottiVenditore poichè u risulta ancora un oggetto di tipo Utente
                     request.getRequestDispatcher("venditore.jsp").forward(request, response);

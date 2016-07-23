@@ -59,30 +59,35 @@ public class VenditoreServlet extends HttpServlet {
             p.setPrezzo(prezzo);
             p.setURLImmagine(urlImmagine);
 
-            
+            //Richiamo il metodo di Factory che aggiunge il prodotto appena creato
             Factory.getInstance().aggiungiProdotto(name, prezzo, disponibilita, urlImmagine, descrizione, idVenditore);
 
+            //Passo come parametro il nuovo prodotto alla pagina di riepilogo e reindirizzo l'utente
             request.setAttribute("prodotto", p);
             request.setAttribute("operazione", "Ecco il prodotto che hai inserito");
             session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
             request.getRequestDispatcher("riepilogoOperazione.jsp").forward(request, response);
         }
 
+        //Se è presente un idProdottoDaModificare..
         if (request.getParameter("idProdottoDaModificare") != null) {
+            //Passo id e prodotto alla pagina di modifica per effettuare l'operazione
             Integer idProdottoDaModificare = Integer.parseInt(request.getParameter("idProdottoDaModificare"));
             request.setAttribute("idProdottoDaModificare", idProdottoDaModificare);
             request.setAttribute("prodottoDaModificare",Factory.getInstance().getProdotto(idProdottoDaModificare));
             request.getRequestDispatcher("modificaProdotto.jsp").forward(request, response);
         }
 
+        //Questo parametro è presente dopo che è stata effettuata una modifica
         if (request.getParameter("prodottoModificato") != null) {
-
+            //Prelevo tutti i dati dal prodotto preso in ingresso
             String name = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getNome();
             String urlImmagine = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getURLImmagine();
             String descrizione = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getDescrizione();
             Double prezzo = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getPrezzo();
             Integer disponibilita = Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoModificato"))).getDisponibilita();
             
+            //Controllo che nessuno dei dati sia vuoto
             if(!(request.getParameter("name").isEmpty())){
                 name = request.getParameter("name");
             }            
@@ -101,6 +106,7 @@ public class VenditoreServlet extends HttpServlet {
             
             Integer idProdottoModificato = Integer.parseInt(request.getParameter("idProdottoModificato"));
 
+            //Effettuo la modifica e reindirizzo alla pagina personale del venditore
             Factory.getInstance().modificaProdotto(idProdottoModificato, name, urlImmagine, descrizione, prezzo, disponibilita);
 
             request.setAttribute("operazione", "Ecco il prodotto modificato");
@@ -109,7 +115,9 @@ public class VenditoreServlet extends HttpServlet {
             request.getRequestDispatcher("controller.jsp").forward(request, response);
         }
 
+        //Se il parametro per l'eliminizione di un prodotto è settato
         if (request.getParameter("idProdottoDaEliminare") != null) {
+            //elimino il prodotto e reindirizzo alla pagina personale del venditore
             Factory.getInstance().eliminaProdotto(Integer.parseInt(request.getParameter("idProdottoDaEliminare")));
             session.setAttribute("listaProdottiVenditore", Factory.getInstance().getVenditore((Integer) session.getAttribute("id")).getProdottiVenditore());
             request.getRequestDispatcher("controller.jsp").forward(request, response);

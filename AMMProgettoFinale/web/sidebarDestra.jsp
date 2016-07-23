@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!--Sidebar destra delle pagine-->
 <div id="sidebarDestra">
     <h3>Chi siamo?</h3>
     <p>Il miglior sito di eCommerce di Quartucciu 

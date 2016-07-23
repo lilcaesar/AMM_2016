@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!--Footer delle pagine-->
 <footer>            
     <a href="http://validator.w3.org/check/referer">
         <img style="border:0;width:100px;height:30px"

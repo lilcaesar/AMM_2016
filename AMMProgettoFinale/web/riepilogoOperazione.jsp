@@ -40,10 +40,12 @@
             </div>
 
             <jsp:include page="sidebarDestra.jsp"/>
-
+            
             <div id="content">
                 <h1>Conferma operazione prodotto</h1>
+                <!--Stampo il tipo di operazione effettuata-->
                 <h3>${operazione}</h3>
+                <!--e i dati riguardo il prodotto-->
                 <ul>
                     <li>${prodotto.getNome()}</li>
                     <li><image src="${prodotto.getURLImmagine()}"  alt="Immagine di ${prodotto.getNome()}" width="120" height="120"></li>

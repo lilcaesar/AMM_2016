@@ -42,7 +42,7 @@
             
             <div id="content">
                 <h2>Login</h2>
-                <!--Form per il login-->
+                <!--Form del login-->
                 <form method="post" action="login.html">
                     <div id="loginForm" class="form">
                         <label for="utente">Nome utente</label>

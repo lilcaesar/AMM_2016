@@ -41,9 +41,10 @@
             <jsp:include page="sidebarDestra.jsp"/>
 
             <div id="content">
-                <!--Tabella dei prodotti-->
+                <!--Controllo che l'utente sia loggato e che sia un cliente-->
                 <c:choose>
                     <c:when test="${loggedIn == true && cliente.getId()==id}">
+                        <!--Input utilizzato per il filtro-->
                         <label for="Filtra">Cerca Prodotto</label>
                         <input type="text" id="Filtra"/>
                         <table id="tabella">
@@ -56,6 +57,7 @@
                                 <th>Carrello</th>
                             </tr>
 
+                            <!--Creo la tabella dei prodotti-->
                             <c:forEach var="prodotto" items="${listaProdotti}">
                                 <tr class="listaProdotti">
                                     <td>${prodotto.getNome()}</td>
@@ -67,9 +69,10 @@
                                 </tr>
                             </c:forEach>
                         </table>
-                        <p id="ErroreFiltro"></p>
+                        <p id="ErroreFiltro"></p> <!--Mostrato solo in caso di mancanza di prodotti nella ricerca(Vedi filter.js)-->
                     </c:when>
                     <c:otherwise>
+                        <!--Utente non loggato-->
                         <jsp:include page="erroreLogin.jsp"/>
                     </c:otherwise>
                 </c:choose>

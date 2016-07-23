@@ -22,7 +22,6 @@
             <header>
                 <h1 id="titoloSito">FirstPersonView Store</h1>
             </header>
-            <!--Sezione con i link per navigare nel sito-->
             <div  id="sidebarSinistra">
                 <nav>
                     <ul>
@@ -42,7 +41,7 @@
             <jsp:include page="sidebarDestra.jsp"/>
 
             <div id="content">
-                <!--Tabella dei prodotti-->
+                <!--Controllo che il venditore sia loggato-->
                 <c:choose>
                     <c:when test="${loggedIn == true && venditore.getId()==id}">
                         <table>
@@ -54,7 +53,7 @@
                                 <th>Modifica</th>
                                 <th>Elimina</th>
                             </tr>
-                            
+                            <!--Stampo la tabella dei prodotti del venditore-->
                             <c:forEach var="prodotto" items="${listaProdottiVenditore}">
                                 <tr>
                                     <td>${prodotto.getNome()}</td>
@@ -68,6 +67,7 @@
                         </table>
                     </c:when>
                     <c:otherwise>
+                        <!--In caso di mancato login-->
                         <jsp:include page="erroreLogin.jsp"/>
                     </c:otherwise>
                 </c:choose>

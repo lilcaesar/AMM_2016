@@ -42,6 +42,7 @@
             <jsp:include page="sidebarDestra.jsp"/>
 
             <div id="content">
+                <!--Controllo che l'utente sia loggato-->
                 <c:choose>
                     <c:when test="${loggedIn == true && venditore.getId()==id}">
                         <h1>Inserimento nuovo prodotto</h1>

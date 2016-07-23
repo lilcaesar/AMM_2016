@@ -22,24 +22,28 @@ h1, h2, h3
     color: blue;
 }
 
-h1, h2{
+h1, h2
+{/*Centro i titoli*/
     text-align: center;
 }
 
 a:link
 {
+    /*Link non visitati*/
     text-decoration: underline;
-    color: purple;
+    color: #003333;
 }
 
 a:visited
 {
+    /*Link visitati*/
     text-decoration: underline;
     color: purple;
 }
 
 a:hover
 {
+    /*Col mouse sopra i link*/
     font-weight: bold;
 }
 
@@ -124,6 +128,7 @@ footer a{
 }
 
 @media only screen and (min-width: 1024px) {
+    /*Schermo grande*/
     #sidebarSinistra{
         position: absolute;
         float: left;
@@ -150,6 +155,7 @@ footer a{
 }
 
 @media only screen and (min-width: 480px)and (max-width: 1024px){
+    /*Schermo medio*/
     #sidebarSinistra{
         position: absolute;
         float: left;
@@ -160,6 +166,7 @@ footer a{
     }
 
     #sidebarDestra{
+        /*Nascondo la sidebar destra*/
         display: none;
     }
 
@@ -170,10 +177,13 @@ footer a{
 }
 
 @media only screen and (max-width: 480px) {
+    /*Schermo piccolo*/
     #sidebarDestra{
+        /*Nascondo la sidebar destra*/
         display: none;
     }
 
+    /*Porto in alto la sidebar sinistra*/
     #sidebarSinistra{
         position: relative;
         width: 100%;

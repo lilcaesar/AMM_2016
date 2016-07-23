@@ -40,13 +40,14 @@
             <div id="content">
                 <h1>Conferma acquisto prodotto</h1>
                 <h3>Ecco il prodotto che vuoi aquistare</h3>
+                <!--Stampo i dati inerenti al prodotto passato allo script per l'acquisto-->
                 <ul>
                     <li>${prodotto.getNome()}</li>
                     <li> <img title="${prodotto.getNome()}"  src="${prodotto.getURLImmagine()}" alt="${prodotto.getNome()}"> </li>
                     <li>${prodotto.getDisponibilita()}</li>
                     <li>${prodotto.getPrezzo()}</li>
                     <li><a href="cliente.html?idProdottoCarrello=${prodotto.getId()}">CONFERMA!</a></li>
-                    <p>${risultatoAcquisto}</p>
+                    <p>${risultatoAcquisto}</p> <!--Notifico l'utente di come è andata la transazione-->
                 </ul>
             </div>
         </div>

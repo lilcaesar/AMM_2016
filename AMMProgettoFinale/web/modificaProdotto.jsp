@@ -42,10 +42,12 @@
             <jsp:include page="sidebarDestra.jsp"/>
 
             <div id="content">
+                <!--Mi assicuro che il venditore sia loggato-->
                 <c:choose>
                     <c:when test="${loggedIn == true && venditore.getId()==id}">
                         <h1>Modifica prodotto</h1>
                         <form method="post" action="venditore.html">
+                            <!--FOrm in cui stampo i dati sul prodotto da modificare scelto e ne permetto la modifica-->
                             <div id="modificaOggettoForm" class="form">
                                 <label for="name">Nome oggetto</label>
                                 <input type="text" name="name" id="name" value="${prodottoDaModificare.getNome()}"/>
@@ -63,10 +65,12 @@
                                 <input type="submit" name="prodottoModificato" value="Modifica"/>
                                 <input type="reset" value="Reimposta"/>
                             </div>
+                            <!--Link alla pagina del controller-->
                             <a href="controller.jsp">Vai al tuo account!</a>
                         </form>
                     </c:when>
                     <c:otherwise>
+                        <!--Venditore non loggato-->
                         <jsp:include page="erroreLogin.jsp"/>
                     </c:otherwise>
                 </c:choose>

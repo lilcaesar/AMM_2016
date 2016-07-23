@@ -42,7 +42,7 @@
                     specializzato nella rivendita di droni, radiocomandi, visori e 
                     accessori legati all'esperienza di volo in prima persona tramite 
                     droni di vario tipo.</p>
-                <!--Lista alle sezioni interne della pagina-->
+                <!--Sezioni interne della pagina-->
                 <ol>
                     <li>
                         <a href="#negozio">Negozio online</a>

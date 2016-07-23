@@ -37,23 +37,28 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
-
+        
+        /*Se viene richiesto l'acquisto di un prodotto dalla pagina del cliente reindirizzo alla pagina del carrello*/
         if (request.getParameter("idProdotto") != null) {
             Integer idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
             request.setAttribute("prodotto", Factory.getInstance().getProdotto(idProdotto));
             request.getRequestDispatcher("carrello.jsp").forward(request, response);
         }
+        
+        /*Se viene confermato l'aquisto nel carrello effettuo la transazione*/
         if (request.getParameter("idProdottoCarrello") != null) {
             Integer idProdottoCarrello = Integer.parseInt(request.getParameter("idProdottoCarrello"));
             Integer idCliente = (Integer) (session.getAttribute("id"));
             Integer risultatoOperazione = 0;
             try {
+                /*Risultato operazione contiene il valore ritornato dalla funzione "acquisto" nella factory*/
                 risultatoOperazione = Factory.getInstance().aquisto(idCliente, idProdottoCarrello);
             } catch (SQLException ex) {
                 Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             switch (risultatoOperazione) {
                 case 1:
+                    /*Successo dell'operazione*/
                     request.setAttribute("risultatoAcquisto", "Aquisto effettuato correttamente");
                     request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
                     session.setAttribute("saldo", Factory.getInstance().getCliente(idCliente).getSaldo());
@@ -61,16 +66,19 @@ public class ClienteServlet extends HttpServlet {
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);
                     break;
                 case 2:
+                    /*Fallimento dell'operazione per saldo insufficiente*/
                     request.setAttribute("risultatoAcquisto", "Aquisto fallito, saldo insufficiente");
                     request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);
                     break;
                 case 3:
+                    /*Fallimento dell'operazione per disponibilità insufficiente*/
                     request.setAttribute("risultatoAcquisto", "Aquisto fallito, disponibilità insufficiente");
                     request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);
                     break;
                 default:
+                    /*Fallimento generico*/
                     request.setAttribute("risultatoAcquisto", "Aquisto fallito, errore sconosciuto");
                     request.setAttribute("prodotto", Factory.getInstance().getProdotto(Integer.parseInt(request.getParameter("idProdottoCarrello"))));
                     request.getRequestDispatcher("carrello.jsp").forward(request, response);

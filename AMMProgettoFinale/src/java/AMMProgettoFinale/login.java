@@ -54,7 +54,7 @@ public class login extends HttpServlet {
         HttpSession session = request.getSession(true);
 
         if (request.getParameter("submit") != null) {
-            // Preleva i dati inviati
+            //Preleva i dati inviati
             String username = request.getParameter("utente");
             String password = request.getParameter("password");
 

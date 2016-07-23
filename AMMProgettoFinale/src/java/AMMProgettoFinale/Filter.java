@@ -34,14 +34,19 @@ public class Filter extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String command = request.getParameter("cmd");
+        //Se è stato inviato un commando
         if (command != null) {
+            //e se il comando è stato impostato
             if (command.equals("search")) {
-                ArrayList<Prodotto> listaProdotti = Factory.getInstance().getProdotti(request.getParameter("text"));
-
+                //Eseguo la ricerca
+                ArrayList<Prodotto> listaProdotti = Factory.getInstance().getProdotti(request.getParameter("text"));                
+                //Imposto la lista come attributo request
                 request.setAttribute("listaProdotti", listaProdotti);
+                //Setto delle informazioni di sicurezza
                 response.setContentType("application/json");
                 response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
                 response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
+                //Invio le informazioni alla pagina con i nuovi prodotti trovati
                 request.getRequestDispatcher("listaProdotti.jsp").forward(request, response);
             }
         }

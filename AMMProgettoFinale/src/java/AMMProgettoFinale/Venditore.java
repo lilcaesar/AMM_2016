@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author root
+ * @author Mattia Samuel Mancosu
  */
 public class Venditore extends Utente {
 

@@ -1,7 +1,7 @@
 <%-- 
     Document   : cliente
     Created on : 9-lug-2016, 11.52.24
-    Author     : root
+    Author     : Mattia Samuel Mancosu
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

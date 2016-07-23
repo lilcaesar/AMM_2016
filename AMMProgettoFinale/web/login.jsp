@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : 9-lug-2016, 11.52.56
-    Author     : root
+    Author     : Mattia Samuel Mancosu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

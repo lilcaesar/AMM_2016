@@ -1,7 +1,7 @@
 <%-- 
     Document   : sidebarDestra
     Created on : 9-lug-2016, 11.50.40
-    Author     : root
+    Author     : Mattia Samuel Mancosu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

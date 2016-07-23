@@ -7,7 +7,7 @@ package AMMProgettoFinale;
 
 /**
  *
- * @author root
+ * @author Mattia Samuel Mancosu
  */
 public class Cliente extends Utente {
 

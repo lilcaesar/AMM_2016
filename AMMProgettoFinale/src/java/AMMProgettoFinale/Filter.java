@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author root
+ * @author Mattia Samuel Mancosu
  */
 @WebServlet(name = "Filter", urlPatterns = {"/filter.json"})
 public class Filter extends HttpServlet {

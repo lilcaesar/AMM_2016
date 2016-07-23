@@ -1,7 +1,7 @@
 <%-- 
     Document   : listaProdotti
     Created on : 13-lug-2016, 12.33.10
-    Author     : root
+    Author     : Mattia Samuel Mancosu
 --%>
 <!--Pagina richiamata durante l'utilizzo del filtro-->
 <%@page contentType="application/json" pageEncoding="UTF-8"%>

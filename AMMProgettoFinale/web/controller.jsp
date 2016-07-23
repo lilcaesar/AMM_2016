@@ -1,7 +1,7 @@
 <%-- 
     Document   : controller
     Created on : 12-lug-2016, 11.54.40
-    Author     : root
+    Author     : Mattia Samuel Mancosu
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

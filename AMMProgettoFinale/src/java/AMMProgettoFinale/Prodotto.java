@@ -7,7 +7,7 @@ package AMMProgettoFinale;
 
 /**
  *
- * @author root
+ * @author Mattia Samuel Mancosu
  */
 public class Prodotto {
     private String nome;

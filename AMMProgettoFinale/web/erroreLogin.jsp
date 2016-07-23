@@ -1,7 +1,7 @@
 <%-- 
     Document   : erroreLogin
     Created on : 9-lug-2016, 16.06.48
-    Author     : root
+    Author     : Mattia Samuel Mancosu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

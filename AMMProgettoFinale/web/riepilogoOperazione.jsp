@@ -1,7 +1,7 @@
 <%-- 
     Document   : inserimentoProdotto
     Created on : 10-lug-2016, 16.51.03
-    Author     : root
+    Author     : Mattia Samuel Mancosu
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

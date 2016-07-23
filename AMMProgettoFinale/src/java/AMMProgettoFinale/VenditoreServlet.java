@@ -36,10 +36,13 @@ public class VenditoreServlet extends HttpServlet {
         // Sessione
         HttpSession session = request.getSession(false);
 
+        //Se è stata effettuata una submit
         if (request.getParameter("submit") != null) {
+            //Se anche uno solo dei campi in ingresso è vuoto rimando l'utente alla pagina precedente
             if ((request.getParameter("name").isEmpty()) || (request.getParameter("urlImmagine").isEmpty()) || (request.getParameter("descrizione").isEmpty()) || (request.getParameter("prezzo").isEmpty()) || (request.getParameter("disponibilita").isEmpty())) {
                 request.getRequestDispatcher("venditore.jsp").forward(request, response);
             }
+            //altrimenti prelevo i dati
             String name = request.getParameter("name");
             String urlImmagine = request.getParameter("urlImmagine");
             String descrizione = request.getParameter("descrizione");
@@ -48,6 +51,7 @@ public class VenditoreServlet extends HttpServlet {
 
             Integer idVenditore = (Integer) (session.getAttribute("id"));
 
+            //creo un nuovo oggetto di Prodotto usando come attributi i dati precedentemente prelevati
             Prodotto p = new Prodotto();
             p.setDescrizione(descrizione);
             p.setDisponibilita(disponibilita);
@@ -55,6 +59,7 @@ public class VenditoreServlet extends HttpServlet {
             p.setPrezzo(prezzo);
             p.setURLImmagine(urlImmagine);
 
+            
             Factory.getInstance().aggiungiProdotto(name, prezzo, disponibilita, urlImmagine, descrizione, idVenditore);
 
             request.setAttribute("prodotto", p);

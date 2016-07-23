@@ -314,7 +314,6 @@ public class Factory {
             String query = "select * from " + "prodotto where nome LIKE ? OR descrizione LIKE ?";
             PreparedStatement stmt = conn.prepareStatement(query);
 
-            
             s = "%" + s + "%";//Mi assicuro che la stringa possa essere contenuta in qualunque parte del nome/descrizione
             stmt.setString(1, s);
             stmt.setString(2, s);
@@ -427,26 +426,29 @@ public class Factory {
             modificaSaldoCliente = conn.prepareStatement(modificaCliente);
             modificaDisponibilitaProdotto = conn.prepareStatement(modificaProdotto);
 
-            Double saldoC = getCliente(idCliente).getSaldo();
-            Double saldoV = getVenditore(getIdVenditore(idProdotto)).getSaldo();
+            Double saldoCliente = getCliente(idCliente).getSaldo();
+            Double saldoVenditore = getVenditore(getIdVenditore(idProdotto)).getSaldo();
             Double prezzo = getProdotto(idProdotto).getPrezzo();
             Integer disponibilita = getProdotto(idProdotto).getDisponibilita();
 
-            if ((saldoC > prezzo) && (disponibilita != 0)) {
-                saldoC -= prezzo;
-                saldoV += prezzo;
+            //COntrollo che il saldo del cliente sia sufficiente all'acquisto e che il prodotto sia disponibile
+            if ((saldoCliente >= prezzo) && (disponibilita != 0)) {
+                saldoCliente -= prezzo;
+                saldoVenditore += prezzo;
                 disponibilita--;
             } else {
                 if (disponibilita == 0) {
                     return 3;//disponibilità esaurita
                 }
-                return 2;//fondi insufficienti
+                if (saldoCliente < prezzo) {
+                    return 2;//Saldo insufficiente
+                }
             }
 
-            modificaSaldoVenditore.setDouble(1, saldoV);
+            modificaSaldoVenditore.setDouble(1, saldoVenditore);
             modificaSaldoVenditore.setInt(2, getIdVenditore(idProdotto));
 
-            modificaSaldoCliente.setDouble(1, saldoC);
+            modificaSaldoCliente.setDouble(1, saldoCliente);
             modificaSaldoCliente.setInt(2, idCliente);
 
             modificaDisponibilitaProdotto.setInt(1, disponibilita);
@@ -456,6 +458,7 @@ public class Factory {
             int r2 = modificaSaldoCliente.executeUpdate();
             int r3 = modificaDisponibilitaProdotto.executeUpdate();
 
+            //In caso di fallimento di almeno una modifica effettuo la rollback
             if ((r1 != 1) || (r2 != 1) || (r3 != 1)) {
                 conn.rollback();
             }
@@ -465,7 +468,7 @@ public class Factory {
         } catch (SQLException e) {
             conn.rollback();
             throw e;
-        } finally {
+        } finally {//Mi assicuro che in caso di errore vengano chiuse le connessioni
             if (modificaSaldoVenditore != null) {
                 modificaSaldoVenditore.close();
             }
@@ -481,7 +484,7 @@ public class Factory {
         }
     }
 
-    public void eliminaProdotto(int id) {
+    public void eliminaProdotto(int id) {//Metodo che dato un idProdotto elimina il prodotto corrispondente
 
         try {
             Connection conn = DriverManager.getConnection(connectionString, "mattiamancosu", "1234");
